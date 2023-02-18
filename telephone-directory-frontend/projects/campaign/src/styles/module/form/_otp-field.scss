@@ -1,0 +1,35 @@
+.otp-wrapper {
+    width: 288px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.otp-field {
+    display: flex;
+
+    &__input {
+        max-width: 48px;
+        height: 48px;
+        text-align: center;
+        margin-right: 4px;
+    }
+}
+
+.otp {
+    &__form {
+        max-width: 356px;
+        text-align: left;
+    }
+
+    &__form-field {
+        display: inline-flex;
+    }
+
+    &__image-box {
+        margin-bottom: 10px;
+    }
+
+    &__segment {
+        margin-bottom: 24px;
+    }
+}

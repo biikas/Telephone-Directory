@@ -1,0 +1,28 @@
+.detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 16px;
+
+    &__img {
+        width: 129px;
+        height: 129px;
+        overflow: hidden;
+        margin-right: 24px;
+    }
+
+    &__main-info {
+        margin-bottom: 20px;
+    }
+
+    &__title {
+        @include font-get(h6);
+    }
+
+    &__subtitle {
+        color: color-get(text-dark, 400);
+        @include font-get(text-sm);
+    }
+}
+

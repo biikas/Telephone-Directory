@@ -1,0 +1,29 @@
+// Background Configuration
+// 
+// Background configuration for a full container, container, mega menu, and card.
+// 
+// Styleguides Config.background
+
+$campaign-background: (
+    card: (
+        inactive: 'projects/campaigns/src/assets/card/card-background.jpg',
+        active: 'projects/campaign/src/assets/card/background@2x.jpg',
+        hover: 'projects/src/assets/card/card-hover.jpg',
+        bg-color: color-get(primary)
+    )
+) !default;
+
+// A function to set the background within an application.
+@function background-get($name, $type) {
+    $set: map-get($campaign-background, $name);
+
+    // @if not $set {
+    //     @error 'Name not found in background color';
+    // }
+
+    @if not $type {
+        @error 'Type not defined';
+    }
+
+    @return map-get($set, $type);
+}

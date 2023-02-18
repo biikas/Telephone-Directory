@@ -1,0 +1,30 @@
+// Form Label
+// 
+// Use this class for form label
+//
+// Markup:
+// <label ndLabel class="nd-label--alt">Form Label</label>
+//
+// .nd-label--alt - to increase the text size to 14px and make the font darker than default
+//
+// Styleguide Form.Label
+$nd-label: (
+    margin: (bottom: 8px,
+    ),
+    color: color-get(text-dark, 300),
+    font: (size: 12px,
+        line-height: normal,
+        weight: normal)
+);
+
+@include nd-label {
+    display: block;
+}
+
+.nd-label {
+
+    &__required:after {
+        content: " *";
+        color: red;
+    }
+}

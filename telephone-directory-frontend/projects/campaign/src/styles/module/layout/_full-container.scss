@@ -1,0 +1,19 @@
+// Full Container Module
+// 
+// Markup
+// <div class="full-container">
+// </div>
+// 
+// Styleguides Modules.Layout.full-container
+
+body, html {
+    height: 100%;
+    position: relative;
+    min-width: 320px;
+}
+
+.full-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

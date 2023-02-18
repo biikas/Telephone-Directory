@@ -1,0 +1,20 @@
+<span class="alert__icon-container">
+    <span icon="alert-{{ data.type ? data.type : 'default' }}" size="24" class="alert__icon"></span>
+</span>
+<span class="alert__content">
+    <span class="alert__title" *ngIf="data.title">
+        {{data.title}}
+    </span>
+    <span class="alert__message">
+        {{ data.message }}
+    </span>
+</span>
+<button type="button" 
+    ndButton
+    [color]="data?.type"
+    [color]="data?.type"
+    (click)="close()" 
+    class="alert__close-button"
+    size="small">
+    Close
+</button>

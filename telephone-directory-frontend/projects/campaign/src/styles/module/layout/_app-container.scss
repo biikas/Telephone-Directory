@@ -1,0 +1,65 @@
+// Container Module
+// 
+// Inside page container of an application.
+// 
+// Markup
+// <div class="app-container">
+//     <aside class="app-container__sidebar">...</aside>
+//     <div class="app-container__content">...</div>
+// </div>
+// 
+// Styleguides Modules.Layout.containers
+
+$app-container: (
+    side-bar: (
+        lg: 240px,
+        md: 184px
+    ),
+);
+
+body, html {
+    height: 100%;
+    position: relative;
+    min-width: 320px;
+}
+
+.app-container {
+    $side-bar: map-get($app-container, side-bar);
+    $side-bar-lg: map-get($side-bar, lg);
+    $side-bar-md: map-get($side-bar, md);
+
+    display: block;
+
+    &__side-bar {
+        display: none;
+
+        @include media-breakpoint-up(md) {
+            position: fixed;
+            top: 0;
+            z-index: 1;
+
+            display: block;
+        }
+    }
+
+    &__content {
+        padding: 12px;
+
+        position: relative;
+        flex-grow: 1;
+        color: color-get(text-dark, 400);
+
+        @include media-breakpoint-up(md) {
+            padding-top: 0;
+            padding-right: 24px;
+            padding-bottom: 32px;
+            padding-left: calc(#{$side-bar-md} + 24px);
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding-left: calc(#{$side-bar-lg} + 24px);
+        }
+    }
+}
+
+

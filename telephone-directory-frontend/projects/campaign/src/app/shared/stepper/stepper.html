@@ -1,0 +1,16 @@
+<div class="stepper__header">
+    <span class="stepper__title">STEPS</span>
+    <ul class="stepper__steps">
+        <li class="stepper__step" *ngFor="let step of steps; let index = index;" 
+            [class.active]="stepperPosition === index"
+            [class.finished]="stepperPosition > index"
+        >
+            <span class="stepper__position" *ngIf="stepperPosition < index || stepperPosition === index">{{ index + 1 }}</span>
+            <span class="stepper__completed" *ngIf="stepperPosition > index">
+                <span icon="check-normal" size="24"></span>
+            </span>
+            {{ step.name }}
+        </li>
+    </ul>
+</div>
+<ng-container *ngTemplateOutlet="selectedStep ? selectedStep?.content : null"></ng-container>

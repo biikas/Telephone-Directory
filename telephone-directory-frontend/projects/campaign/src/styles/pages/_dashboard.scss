@@ -1,0 +1,164 @@
+$dashboard: (
+    color: color-get(text-dark, 400),
+    active-color: color-get(primary, 500),
+    border-color: color-get(border, 300),
+    active-text-color: color-get(text-light, 500)
+);
+
+.dashboard {
+    &__segment {
+        margin-bottom: 24px;
+    }
+
+    &__control {
+        max-width: 395px;
+    }
+
+    &__header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 32px;
+    }
+
+    &__filter {
+        display: flex;
+        align-items: center;
+
+        margin-left: -6px;
+        margin-right: -6px;
+    }
+
+    &__title {
+        font-weight: font-weight(normal, primary);
+        font-size: 30px;
+        line-height: 1.2;
+        color: #6d6d6d;
+    }
+
+    &__nav {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    &__campaign {
+        font-weight: font-weight(bold, secondary);
+    }
+
+    &__title-wrapper {
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    &__transactionTitle {
+        display: inline-block;
+        margin-bottom: 0;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+
+    &__search-button {
+        position: relative;
+        float: left;
+    }
+}
+
+.campaignlist {
+    &__campaign {
+        font-weight: font-weight(bold, secondary);
+    }
+
+    &__content {
+        display: flex;
+    }
+}
+
+.dashboardTable {
+    $icon: map-get($table, icon);
+    $heading: map-get($table, heading);
+    $tr-active: background-get(card, active);
+
+    width: 100%;
+
+    &--spacing {
+        margin-bottom: 24px
+    }
+
+    &--scrollable {
+        max-height: 75vh;
+        overflow: auto;
+    }
+
+    &__header {
+        border-bottom: 1px solid map-get($table, border-color);
+    }
+
+    &__th {
+        vertical-align: baseline;
+        @include common-properties($heading);
+    }
+
+    &__tr {
+        border-bottom: 1px solid map-get($table, border-color);
+        cursor: pointer;
+
+        &:hover {
+            color: map-get($dashboard, active-color);
+            border-bottom: 3px solid map-get($dashboard, active-color);
+        }
+
+        // &:active {
+        //     // color: map-get($dashboard, active-color);
+        //     // border-bottom: 3px solid map-get($dashboard, active-color);
+        //     // border:1px solid color-get(primary, 400);
+        //     // background-image: url($tr-active);
+        //     background-color: color-get(primary);
+        //     background-repeat: repeat;
+        // }
+
+        // &.active {
+        //     // color: map-get($dashboard, active-color);
+        //     // border-bottom: 3px solid map-get($dashboard, active-color);
+        //     // border:1px solid color-get(primary, 400);
+        //     background-image: url($tr-active);
+        //     background-color: color-get(primary);
+        //     background-repeat: repeat;
+        // }
+
+        &:visited {
+            background-color: color-get(primary);
+            background-repeat: repeat;
+        }
+    }
+
+
+
+
+
+    &__td {
+        @include common-properties($table);
+
+        // for right alignment of text
+        &--text-right {
+            text-align: right;
+        }
+
+        &.active {
+            // color: map-get($dashboard, active-color);
+            // border-bottom: 3px solid map-get($dashboard, active-color);
+            // border:1px solid color-get(primary, 400);
+            // background-image: url($tr-active);
+            color: map-get($map: $dashboard, $key:active-text-color );
+            background-color: color-get(primary);
+            background-repeat: repeat;
+        }
+    }
+
+    &__icon {
+        @include common-properties($icon);
+    }
+
+    &__pagination {
+        padding: map-get($table, padding);
+    }
+}

@@ -1,0 +1,14 @@
+.form-title {
+    margin-bottom: 22px;
+    @include font-get(h6, medium, secondary);
+    color: color-get(text-dark, 500);
+
+    &--arrangement {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        margin-right: 4px;
+    }
+}

@@ -1,0 +1,88 @@
+
+ <section class="pagination__info" *ngIf="showRecords">
+    <div class="pagination__select-wrapper" *ngIf="pageSize !== undefined">
+        <p class="pagination__text">Items per page</p>
+        <ng-select 
+            (ngModelChange)="itemChange($event)" 
+            [(ngModel)]="pageSize" 
+            class="select pagination__select" 
+            [items]="pageSizeOptions" 
+            [clearable]="false" 
+            [searchable]="false">
+            <ng-template ng-label-tmp let-item="item">
+              {{item}}
+            </ng-template>
+        </ng-select>
+    </div>
+
+    <p class="pagination__text">
+        Records of {{ currentRecords.from }} - 
+        {{ currentRecords.to }} of {{ total }}
+    </p>
+ </section>
+
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination__content" 
+    [class.pagination__content--align-center]="showRecords == false">
+    <li class="pagination__item pagination__first-item">
+        <button 
+            type="button"
+            class="pagination__button"
+            ndButton="text"
+            [disabled]="pager.currentPage === 1"
+            (click)="setPage(1)">
+            First
+        </button>
+    </li>
+
+    <ng-container *ngIf="pager.startPage !== 1 && pager.startPage - 1 !== 1">
+        <li class="pagination__item pagination__number">
+            <button class="pagination__button" type="button" ndButton="text" (click)="setPage(1)">
+                1
+            </button>
+        <li class="pagination__item pagination__number">
+            <button class="pagination__button" type="button" ndButton="text" (click)="setPage(pager.startPage - 1)">
+                ...
+            </button>
+        </li>
+    </ng-container>
+    <li *ngFor="let page of pager.pages" [ngClass]="{ active: pager.currentPage === page }"
+        class="pagination__item pagination__number">
+        <button class="pagination__button" type="icon" [ndButton]="pager.currentPage === page ? 'outline' : 'text'"
+            [color]="pager.currentPage === page ? 'primary' : 'text'" (click)="setPage(page)">
+            {{ page }}
+        </button>
+    </li>
+    <ng-container *ngIf="pager.endPage !== pager.totalPages && pager.endPage + 1 !== pager.totalPages">
+        <li class="pagination__item pagination__number">
+            <button class="pagination__button" type="button" ndButton="text" (click)="setPage(pager.endPage + 1)">
+                ...
+            </button>
+        </li>
+        <li class="pagination__item pagination__number">
+            <button class="pagination__button" type="button" ndButton="text" (click)="setPage(pager.totalPages)">
+                {{ pager.totalPages }}
+            </button>
+        </li>
+    </ng-container>
+
+    <li class="pagination__item pagination__last-item">
+        <button class="pagination__button" type="button"
+            ndButton="text"
+            [disabled]="pager.currentPage === pager.totalPages"
+            (click)="setPage(pager.totalPages)">
+            Last
+        </button>
+    </li>
+    <li class="pagination__item pagination__prev-item">
+        <button type="button" [disabled]="pager.currentPage === 1" ndButton="text"
+            class="pagination__button" (click)="setPage(pager.currentPage - 1)">
+            <span icon="chevron-left" size="18"></span>
+        </button>
+    </li>
+    <li class="pagination__item pagination__next-item">
+        <button type="button" [disabled]="pager.currentPage === pager.totalPages" ndButton="text"
+            (click)="setPage(pager.currentPage + 1)" class="pagination__button">
+            <span icon="chevron-right" size="18"></span>
+        </button>
+    </li>
+</ul>

@@ -1,0 +1,51 @@
+$user-profile: (
+    color: color-get(text-dark),
+    title: (
+        font: (
+            size: pixel-to-rem(12),
+            line-height: pixel-to-rem(18),
+            weight: font-weight(bold)
+        ),
+        margin: (
+            bottom: 0
+        )
+    ),
+    text: (
+        font: (
+            size: pixel-to-rem(10),
+            line-height: pixel-to-rem(14),
+        ),
+        margin: (
+            bottom: 0
+        )
+    ),
+);
+
+.user-profile {
+    $title: map-get($user-profile, title);
+    $text: map-get($user-profile, text);
+
+    display: flex;
+    @include common-properties($user-profile);
+
+    &__left {
+        margin-right: 8px;
+    }
+
+    &__content {
+        margin-right: auto;
+    }
+
+    &__title {
+        @include common-properties($title);
+    }
+
+    &__text {
+        @include common-properties($text);
+        color: color-get(text-dark, 300);
+    }
+
+    &__icon {
+        margin-right: 6px;
+    }
+}

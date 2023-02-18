@@ -1,0 +1,45 @@
+.is-loading {
+    pointer-events: none;
+}
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    &__brand {
+        width: 32px;
+    }
+
+    &__title {
+        margin-top: 32px;
+        margin-bottom: 12px;
+    }
+
+    &__bar {
+        width: 100%;
+        max-width: 200px;
+        border-radius: 2px;
+        height: 4px;
+        background-color: color-get(border, 300);
+        overflow: hidden;
+    }
+
+    &__marker {
+        width: 80px;
+        height: 100%;
+        border-radius: 2px;
+        background-color: color-get(primary, 400);
+        transform: translate3d(-80px, 0, 0);
+        animation: scrolling 1.5s linear infinite;
+    }
+
+    @keyframes scrolling {
+        to {
+            transform: translate3d(280px, 0, 0);
+        }
+    }
+}

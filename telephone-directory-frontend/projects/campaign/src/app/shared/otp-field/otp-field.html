@@ -1,0 +1,16 @@
+<input
+    type="text"
+    ndInput
+    class="otp-field__input"
+    placeholder="*"
+    minlength="1"
+    maxlength="1"
+    *ngFor="let character of placeholderForCharacters; let index = index"
+    [attr.tabindex]="inputTabIndex(index)"
+    [attr.autofocus]="index === 0"
+    (keydown)="onKeyDown($event, index)"
+    (focus)="onFocus($event, index)"
+    (input)="onInput($event, index)"
+    (paste)="onPaste($event, index)"
+    [value]="characters[index]"
+/>

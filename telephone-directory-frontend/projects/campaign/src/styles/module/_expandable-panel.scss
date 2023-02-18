@@ -1,0 +1,50 @@
+// Expandable Panel
+//
+// A stackable accordion. 
+//
+// Markup
+// 	<div class="expandable-panel">
+// 		<div class="expandable-panel__pane">
+// 			<div class="expandable-panel__header">
+// 				...
+// 			</div>
+// 			<button type="button" class="expandable-panel__trigger">
+// 				Expand
+// 			</button>
+// 		</div>
+// 		<div class="expandable-panel__body">
+// 			...
+// 		</div>
+// 	</div>
+//
+// Styles Modules.expandable-panel
+
+.expandable-panel {
+	display: block;
+	
+	&:not(:last-child) {
+		border-bottom: 1px solid color-get(border, 200);
+	}
+
+	&__pane {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__header {
+		display: block;
+		flex-grow: 1;
+	    
+	}
+	
+	&__trigger {
+        flex-shrink: 0;
+        border-color: color-get(border, 300);
+        color: color-get(text-dark, 300);
+	}
+
+	&__body {
+		margin-top: 24px;
+	}
+}

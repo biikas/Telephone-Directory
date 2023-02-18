@@ -1,0 +1,59 @@
+$badge: (
+    bg-color: color-get(text-dark, 200),
+    padding: (
+        x: 6px,
+        y: 2px,
+    ),
+    font: (
+        size: pixel-to-rem(11),
+        line-height: 1,
+        weight: bold
+    ),      
+    radius: 9px,
+    color: color-get(text-light)
+);
+
+.badge {
+    text-transform: uppercase;
+    
+    @include common-properties($badge);
+
+    &--active {
+        background-color: color-get(primary, 500);
+    }
+
+    &--success {
+        background-color: color-get(success);
+    }
+
+    &--warning {
+        background-color: color-get(warn);
+    }
+
+    &--error {
+        background-color: color-get(error);
+    }
+
+    &--info {
+        background-color: color-get(info);
+    }
+
+    &--disabled {
+        opacity: 0.4;
+    }
+
+    $index: 1;
+    @each $name, $color in color-get(palette, normal) {
+        &--variant-#{$index} {
+            background-color: $color;
+        }
+        
+        $index: $index + 1;
+    }
+
+    &--position {
+        position: absolute;
+        top: 7px;
+        right: -6px;
+    }
+}

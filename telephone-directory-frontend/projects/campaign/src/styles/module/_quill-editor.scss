@@ -1,0 +1,35 @@
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+
+.ql-toolbar.ql-snow {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-color: color-get(border);
+}
+
+.ql-container.ql-snow {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-color: color-get(border);
+    height: 120px;
+}
+
+quill-editor:hover {
+    .ql-toolbar.ql-snow,
+    .ql-container.ql-snow {
+        border-color: color-get(border, 600)
+    }
+}
+
+.ql-container {
+    color: color-get(text-dark);
+}
+
+.quill-editor {
+    .ql-container.ql-snow {
+        height: 100px;
+    }
+}
+    

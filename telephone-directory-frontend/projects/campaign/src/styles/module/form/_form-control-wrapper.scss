@@ -1,0 +1,163 @@
+.form-control-wrapper {
+    position: relative;
+    display: block;
+
+    &.is-hovering {
+        .form-control-wrapper__icon:not(.right) {
+            color: color-get(text-dark);
+        }
+    }
+
+    &.is-focused {
+        .form-control-wrapper__icon:not(.right) {
+            color: color-get(text-dark, 200);
+        }
+    }
+
+    &.is-disabled {
+        .form-control-wrapper__icon {
+            color: color-get(text-dark, 200);
+        }
+    }
+
+    &.success {
+        .form-control-wrapper__control {
+            border-bottom-color: color-get(success);
+        }
+
+        &:hover {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(success, 600);
+            }
+        }
+
+        &:focus {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(success, 600);
+            }
+        }
+
+        &:disabled {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(success, 100);
+            }
+        }
+    }
+
+    &.error {
+        .form-control-wrapper__control {
+            border-bottom-color: color-get(error);
+        }
+
+        &:hover {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(error, 600);
+            }
+        }
+
+        &:focus {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(error, 600);
+            }
+        }
+
+        &:disabled {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(error, 100);
+            }
+        }
+    }
+    
+    &.warn {
+        .form-control-wrapper__control {
+            border-bottom-color: color-get(warn);
+        }
+
+        &:hover {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(warn, 600);
+            }
+        }
+
+        &:focus {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(warn, 600);
+            }
+        }
+
+        &:disabled {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(warn, 100);
+            }
+        }
+    }
+
+    &.info {
+        .form-control-wrapper__control {
+            border-bottom-color: color-get(info);
+        }
+
+        &:hover {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(info, 600);
+            }
+        }
+
+        &:focus {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(info, 600);
+            }
+        }
+
+        &:disabled {
+            .form-control-wrapper__control {
+                border-bottom-color: color-get(info, 100);
+            }
+        }
+    }
+
+    &__control, &__control.select {
+        padding-left: calc((var(--icon-size, 24px) + 20px));
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        z-index: 1;
+        color: color-get(text-dark, 400);
+        margin-left: 5px;
+
+        @include media-breakpoint-up(md) {
+            margin-left: 0;
+        }
+
+        &:not(a):not(button) {
+            pointer-events: none;
+        }
+
+        &.right {
+            right: 12px;
+            left: auto;
+            color: color-get(text-dark, 300);
+
+            ~ .form-control-wrapper__control {
+                padding-right: calc((var(--icon-size, 24px) + 20px));
+                padding-left: 12px;
+            }
+        }
+
+        &.left {
+            ~ .form-control-wrapper__control, ~ .toggle-password .form-control-wrapper__control {
+                padding-left: calc((var(--icon-size, 24px) + 20px));
+            }
+        }
+    }
+
+    &.selected {
+        > .form-control-wrapper__control {
+            background-color: color-get(border, 200);
+        }
+    }
+}

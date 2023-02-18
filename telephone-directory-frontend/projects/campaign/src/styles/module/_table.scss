@@ -1,0 +1,75 @@
+$table: (
+    padding: 16px,
+    border-color: color-get(border, 200),
+    color: color-get(text-dark),
+
+    font: (
+        size: pixel-to-rem(14),
+        line-height: pixel-to-rem(20),
+    ),
+
+    heading: (
+        padding: (
+            x: 16px,
+            y: 12px
+        ),
+        font: (
+            size: pixel-to-rem(12),
+            line-height: 1.5,
+            weight: font-weight(bold)
+        ),
+        color: color-get(text-dark)
+    ),
+
+    icon: (
+        margin: (
+            right: 6px
+        ),
+        color: color-get(text-dark, 400)
+    )
+);
+
+.table-container {
+    overflow: auto;
+}
+
+.table {
+    $icon: map-get($table, icon);
+    $heading: map-get($table, heading);
+
+    width: 100%;
+
+    &--spacing {
+        margin-bottom: 24px
+    }
+
+    &__header {
+        border-bottom: 1px solid map-get($table, border-color);
+    }
+
+    &__th {
+        vertical-align: baseline;
+        @include common-properties($heading);
+    }
+
+    &__tr {
+        border-bottom: 1px solid map-get($table, border-color);
+    }
+
+    &__td {
+        @include common-properties($table);
+
+        // for right alignment of text
+        &--text-right {
+            text-align: right;
+        }
+    }
+
+    &__icon {
+        @include common-properties($icon);
+    }
+
+    &__pagination {
+        padding: map-get($table, padding);
+    }
+}

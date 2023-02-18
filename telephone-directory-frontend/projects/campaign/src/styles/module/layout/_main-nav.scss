@@ -1,0 +1,89 @@
+// Menu Component 
+// 
+// Suitable for foremost navigation styling in an application. 
+// If the menu link has an active class, the icon changes to an active state and vice-versa.
+// 
+// Markup
+// <ul class="menu">
+//     <li class="menu__item">
+//         <a class="menu__link">
+//             <span class="menu__icon menu__icon--active">
+//                 <img src="..." [alt]="..." class="menu__img"/>  
+//             </span>
+//             <span class="menu__icon menu__icon--inactive">
+//                 <img src="..." [alt]="..." class="menu__img"/> 
+//             </span>
+//             Menu Element
+//         </a>
+//     </li>       
+// </ul>
+// 
+// Styleguides Modules.Layout.menu
+
+.main-nav {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+    
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        padding: 12px;
+        color: color-get(text-dark, 300);
+        @include font-get(text-sm, medium, secondary);
+        
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            justify-content: flex-start;
+
+            padding-left: 30px;
+        }
+
+        &:hover {
+            color: color-get(text-dark, 400);
+        }
+
+        &:hover, &.active {
+            &::before {
+                opacity: 0.9;
+            }
+        }
+
+        &.active {
+            color: color-get(text-dark, 500);
+            .menu__icon--active {
+                display: block;
+            }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+
+            width: 4px;
+            height: 16px;
+
+            background: color-get(primary);
+        }
+
+    }
+
+    &__icon {
+        margin-right: 12px;
+    }
+    
+    &__img {
+        width: 20px;
+        height: 20px;
+    }
+}

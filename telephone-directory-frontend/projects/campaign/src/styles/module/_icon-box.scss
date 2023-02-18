@@ -1,0 +1,38 @@
+// Icon Box Component
+//
+// Circle box with an icon.
+//
+// Markup: 
+//	<section class="icon-box {{modifier_class}}">
+//	    <img src="..." alt="..." class="icon-box__icon">
+//	</section> 
+//
+// Modifier section
+// .icon-box--small - small icon box.
+//
+// Styleguide Modules.icon-box
+
+$icon-box: (
+	bg-color: color-get(primary, 100),
+	radius: 50%,
+	size: 128px,
+	padding: 12px
+);
+
+.icon-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@include common-properties($icon-box);
+
+	&--small {
+		width: 64px;
+		height: 64px;
+	}
+
+	&__icon {
+		max-width: 100%;
+		height: auto;
+	}
+}

@@ -1,0 +1,74 @@
+// Switch Button
+//
+// component class used for the switch button
+// 
+// Styleguide Component.SwitchButton
+.switch-button {   
+
+    // To style the view of the switch button
+    // 
+    // :after - To style the switch circular button
+    // 
+    // No styleguide reference
+    &__graphic {
+        appearance: none;
+        outline: none;
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 26px;
+        border-radius: 13px;
+        background: color-get(text-dark, 200);
+        border: 1px solid color-get(text-dark, 100);
+        transition: border-color .2s ease-in-out, background-color .2s ease-in-out;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: color-get(text-light);
+            transition: left .2s ease-in-out;
+        }
+    }
+
+    // change the background and border color when the input is checked state
+    // 
+    // :after - to move the circular button to the right when input state is checked
+    // 
+    // No styleguide reference
+    &__input:checked + &__graphic {
+        background-color: color-get(primary, 400);
+        border-color: color-get(primary, 500);
+
+        &::after {
+            left: calc(100% - 23px);
+        }
+    }
+
+    // added the box shadow to the view of switch button when input is in focus state
+    // 
+    // No styleguide reference
+    &__input:focus + &__graphic {
+        box-shadow: 0 0 0 2px rgba(170, 173, 177, 0.5);
+    }
+
+    // added the box shadow similar to active state in the view of switch button when input is in focus and checked state
+    // 
+    // No styleguide reference
+    &__input:focus:checked + &__graphic {
+        box-shadow: 0 0 0 2px rgba(58, 118, 193, 0.5);
+    }
+
+    &__input:disabled + &__graphic {
+        pointer-events: none;
+        opacity: .4;
+    }
+
+    &__input:not(:disabled) + &__graphic {
+        cursor: pointer;
+    }
+}

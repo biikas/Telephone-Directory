@@ -1,0 +1,33 @@
+$icon: (
+    size: 24px,
+    color: inherit,
+);
+
+// Suitable to display the icon
+//
+// &__element - element, add the width, height and fill to the element
+//  &__element--gradient - modifier of the element, make the icon color to white
+//  &__element--gradient - modifier of the element, make the icon color to theme primary
+//  &__element--gradient - modifier of the element, make the icon color to theme success
+//  &__element--gradient - modifier of the element, make the icon color to theme default dark
+.icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    line-height: 1;
+
+    width: map-get($icon, size);
+    height: map-get($icon, size);
+    width: var(--icon-size, #{map-get($icon, size)});
+    height: var(--icon-size, #{map-get($icon, size)});
+    color: inherit;
+    color: var(--icon-color, inherit);
+    fill: currentColor;
+    
+    &__element {
+        width: 100%;
+        height: 100%;
+        fill: inherit;
+    }
+}

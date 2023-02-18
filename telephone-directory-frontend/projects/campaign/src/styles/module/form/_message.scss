@@ -1,0 +1,38 @@
+$nd-message: (
+    padding:(
+        top: 2px,
+        bottom: 2px,
+        x: 10px,
+    ),
+    font: (
+        size: 12px,
+        line-height: 1.2,
+    ),
+    modifiers: (
+        error: (
+            color: color-get(error),
+        ),
+        warn: (
+            color: color-get(warn),
+        ),
+        success: (
+            color: color-get(success),
+        ),
+        info: (
+            color: color-get(info),
+        )
+    ),
+);
+
+@include nd-message {
+    display: block;
+    text-align: left;
+    min-height: 24px;
+
+    @include media-breakpoint-up(md) {
+        padding-top: 3px;
+        padding-right: 0;
+        padding-bottom: 7px;
+        padding-left: 0;
+    }
+}

@@ -1,0 +1,108 @@
+<page-header title="List of Users" class="page-header--secondary" *ngIf="!isLoading">
+    <button type="button" ndButton="text" size="icon" class="campaign__search-button" title="Search"
+        (click)="toggleSearch()">
+        <span icon="search-outline" size="20"></span>
+    </button>
+    <button type="button" ndButton="primary" [routerLink]="routeToCreateUser">
+        <span icon="plus-circle-outline" size="20" class="campaign__icon"></span>
+        Create
+    </button>
+</page-header>
+
+<page-loader [showLoader]="isLoading"></page-loader>
+
+<form (validateAndSubmit)="searchSubmit($event)" [formGroup]="searchForm" class="campaign__search" *ngIf="showSearch">
+    <section class="card">
+        <div class="card__body">
+            <h2 class="heading">Search User</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <nd-form-field>
+                        <label for="name" ndLabel>Name</label>
+                        <input type="text" name="name" ndInput formControlName="name" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                </div>
+
+                <div class="col-md-3">
+                    <nd-form-field>
+                        <label for="username" ndLabel>User Name</label>
+                        <input type="text" name="User name" ndInput formControlName="username" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                </div>
+            </div>
+        </div>
+        <section class="button-group">
+            <section class="button-group__body">
+                <button type="submit" ndButton="primary" class="button-group__button">Search</button>
+                <button type="button" ndButton="outline" class="button-group__button" (click)="reset()">Reset</button>
+            </section>
+        </section>
+    </section>
+</form>
+
+<main class="card">
+    <div class="table-container">
+        <table class="table" *ngIf="!isLoading && users?.length > 0">
+            <thead class="table__header">
+                <tr>
+                    <th class="table__th">S.No.</th>
+                    <th class="table__th">Name</th>
+                    <th class="table__th">User Name</th>
+                    <th class="table__th">Mobile </th>
+                    <th class="table__th">Email Address</th>
+                    <th class="table__th">Status</th>
+                    <th class="table__th">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let i=index" class="table__tr">
+                    <td class="table__td">{{ (page - 1) * pageSize + i +1 }}.</td>
+                    <td class="table__td">{{ user.name }}</td>
+                    <td class="table__td">{{ user.userName }}</td>
+                    <td class="table__td">{{ user.mobileNumber }}</td>
+                    <td class="table__td">{{ user.emailAddress }}</td>
+                    <!-- <td class="table__td">{{ user.active === 'Y' ? 'Active' : 'Inactive'}}</td> -->
+                    <!-- <td class="table__td">
+                    <span [ngClass]="getStatus(user?.active)?.className">
+                    {{ getStatus(user?.active)?.name }}
+                    </span>
+                </td> -->
+                    <td class="table__td">
+                        <switch-button [checked]="user.active === 'Y'" (change)="changeStatus(user)"></switch-button>
+                    </td>
+                    <td class="table__td">
+                        <dropdown-menu>
+                            <button type="button" ndButton="text" size="icon" dropdownTrigger>
+                                <span icon="ellipsis-horizontal"></span>
+                            </button>
+                            <button ndButton="text" dropdownItem (click)="routeToResetPassword(user)">
+                                <span icon="reset" size="20" class="table__icon"></span>
+                                Reset Password
+                            </button>
+                            <button ndButton="text" dropdownItem (click)="viewDetails(user?.id)">
+                                <span icon="eye-material-outline" size="20" class="table__icon"></span>
+                                Details
+                            </button>
+                            <button ndButton="text" dropdownItem (click)="routeToModifyUser(user)">
+                                <span icon="edit-outline" size="20" class="table__icon"></span>
+                                Edit
+                            </button>
+                        </dropdown-menu>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <section class="table__pagination" *ngIf="!isLoading && users?.length && total > 0">
+            <app-pagination [total]="total" (changePage)="onChangePage($event)" [pageSize]="pageSize" [initialPage]="page">
+            </app-pagination>
+        </section>
+        <!-- <div class="card__body" *ngIf="isLoading">
+        Loading ...
+        </div> -->
+    </div>
+    <div class="card__body" *ngIf="!isLoading && !users?.length">
+        No records found
+    </div>
+</main>

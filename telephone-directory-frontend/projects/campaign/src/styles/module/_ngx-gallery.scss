@@ -1,0 +1,29 @@
+// Ngx Gallery'
+//
+// Angular image gallery plugin. 
+// Used for changing default icons with theme icons.
+//  
+// Styleguides Module.ngx-gallery
+
+.ngx-gallery {
+	&-thumbnail {
+		border-radius: 14px;
+	}
+
+	&-icon-content {
+	    width: 48px;
+    	height: 48px;
+	}
+
+	&__prev-icon {
+		background: url('../assets/ngx-gallery-icons/arrow-circle-left-outline.svg') no-repeat;
+	}
+
+	&__next-icon {
+		background: url('../assets/ngx-gallery-icons/arrow-circle-right-outline.svg') no-repeat;
+	}
+
+	&__close-icon {
+		background: url('../assets/ngx-gallery-icons/close-circle-outline.svg') no-repeat;
+	}
+}

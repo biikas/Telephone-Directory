@@ -1,0 +1,12 @@
+<div class="page-header__left">
+    <button *ngIf="shouldShowBack" type="button"
+        (click)="back()"
+        class="page-header__back-button">
+        <span icon="back-arrow" size= "24"></span>
+    </button>
+    <h1 class="page-header__title">{{title}}</h1>
+</div>
+<div class="page-header__right">
+    <ng-content>
+    </ng-content>       
+</div>

@@ -1,0 +1,27 @@
+// Form Field
+// 
+// class to wrap mainly label and input/select/textarea and mainly used with the form
+// 
+// Markup:
+// <nd-form-field class="nd-form-field--flex">
+//      <label>Label</label>
+//      <input type="text">        
+// </nd-form-field>
+// 
+// .nd-form-field--flex - to make the form field display(flex) with justify content(space-between), align-items(center) and margin-bottom of 24px
+// 
+// Styleguide Form.Field
+.nd-form-field {
+    margin-bottom: 10px;
+    display: block;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 0;
+    }
+
+    &--flex {        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

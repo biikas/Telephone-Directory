@@ -1,0 +1,217 @@
+$nd-button: (
+    radius: 3px,
+    padding: (
+        x: 12px,
+    ),
+    bg-color: color-get(text-dark, 100),
+    color: color-get(text-dark, 400),
+    size: (
+        height: 42px,
+    ),
+    font: (
+        size: pixel-to-rem(14),
+        line-height: 1,
+        weight: font-weight(medium),
+        family: font-family(secondary)
+    ),
+    states: (
+        hover: (
+            color: color-get(text-light),
+            bg-color: color-get(text-dark, 200),
+        ),
+        active: (
+            bg-color: color-get(text-dark),
+        ),
+        focus: (
+            outline: none,
+            shadow: 0 0 0 2px rgba(color-get(text-dark, 200), .5),
+        ),
+        disabled: (
+            opacity: .2
+        )
+    ),
+    modifiers: (
+        outline: (
+            border: 1px solid color-get(border, 300),
+            bg-color: transparent,
+            color: color-get(text-dark, 300),
+            states: (
+                hover: (
+                    bg-color: transparent,
+                    color: color-get(text-dark, 300),
+                    border: 1px solid color-get(border, 200),
+                ),
+                active: (
+                    bg-color: transparent,
+                    color: color-get(text-dark, 300),
+                    border: 1px solid color-get(border, 400),
+                ),
+            )
+        ),
+        text: (
+            border: none,
+            bg-color: transparent,
+            color: color-get(text-dark, 400),
+            states: (
+                hover: (
+                    color: color-get(text-dark, 400),
+                    bg-color: color-get(text-dark, 100),
+                ),
+                active: (
+                    color: color-get(text-dark, 400),
+                    bg-color: color-get(text-dark, 200),
+                ),
+                focus: (
+                    bg-color: color-get(text-dark, 100),
+                ),
+            )
+        ),
+        small: (
+            size: (
+                height: 30px,
+            ),
+            padding: (
+                x: 12px,
+            ),
+            font: (
+                size: 11px,
+            )
+        ),
+        large: (
+            radius: 6px,
+            padding: (
+                x: 30px,
+            ),
+            size: (
+                height: 48px,
+            ),
+            font: (
+                size: pixel-to-rem(16)
+            ),
+        ),
+        icon: (
+            size: 36px,
+            padding: 4px,
+            radius: 50%,
+        ),
+    ),
+    concated-modifiers: (
+        primary: (
+            bg-color: color-get(primary),
+            color: color-get(text-light),
+            states: (
+                hover: (
+                    color: color-get(text-light),
+                    bg-color: color-get(primary, 400),
+                ),
+                active: (
+                    bg-color: color-get(primary, 600),
+                ),
+                focus: (
+                    outline: none,
+                    shadow: 0 0 0 2px rgba(color-get(primary, 400), .5),
+                ),
+                disabled: (
+                    opacity: .4
+                )
+            ),
+            modifiers: (
+                outline: (
+                    border: 1px solid color-get(primary, 500),
+                    bg-color: transparent,
+                    color: color-get(primary, 500),                    
+                    states: (
+                        hover: (
+                            color: color-get(primary, 500),
+                            bg-color: color-get(primary, 100),
+                            border: 1px solid color-get(primary, 400),
+                        ),
+                        active: (
+                            color: color-get(primary, 500),
+                            bg-color: color-get(primary, 100),
+                            border: 1px solid color-get(primary, 600),
+                        ),
+                        focus: (
+                            // outline: none,
+                            bg-color: color-get(primary, 100),
+                            // shadow: 0 0 0 2px rgba(color-get(primary, 400), .5),
+                        ),
+                    )
+                ),
+                text: (
+                    color: color-get(primary),
+                    bg-color: transparent,
+                    states: (
+                        hover: (
+                            color: color-get(primary),
+                            bg-color: color-get(primary, 100),
+                        ),
+                        active: (
+                            color: color-get(primary),
+                            bg-color: color-get(primary, 100),
+                        ),
+                        focus: (
+                            bg-color: color-get(primary, 100),
+                        ),
+                    )
+                ),
+            )
+        ),        
+        secondary: (
+            color: #db1127,
+            bg-color: color-get(text-light),
+        ),
+        error: (
+            color: color-get(text-light),
+            bg-color: color-get(error)
+        ),
+        warn: (
+            color: color-get(text-light),
+            bg-color: color-get(warn)
+        ),
+        success: (
+            color: color-get(text-light),
+            bg-color: color-get(success)
+        ),
+        info: (
+            color: color-get(text-light),
+            bg-color: color-get(info)
+        ),
+        large: (
+            modifiers: (
+                icon: (
+                    size: 46px
+                ),
+            )
+        )
+    )
+);
+
+@include nd-button {
+    $concated-modifiers: map-get($nd-button, concated-modifiers);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+
+    @each $name, $properties in $concated-modifiers {
+        $states: map-get($properties, states);
+        $modifiers: map-get($properties, modifiers);
+
+        &--#{$name} {
+            @include common-properties($properties);
+            @include states($states);
+        }
+
+        &--#{$name}#{&} {
+            @include modifiers($modifiers);
+        }
+    }
+
+    &--full {
+        @include media-breakpoint-up(sm) {
+            width: 100%;
+        }
+    }
+};

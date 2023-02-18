@@ -1,0 +1,86 @@
+$tabs: (
+    padding: 16px,
+    color: color-get(text-dark, 400),
+    active-color: color-get(primary, 500),
+    border-color: color-get(border, 300),
+);
+
+.tabs {
+    &__list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid map-get($tabs, border-color);
+        margin-bottom: 0;
+        padding: 0 24px;
+
+        &--align-center {
+            justify-content: center;
+        }
+
+        &--medium {
+            width: 66.66666667%;
+            margin: 0 auto;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__menu {
+        padding-left: map-get($tabs, padding);
+        padding-right: map-get($tabs, padding);
+        margin-bottom: -1px;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    &__links {
+        padding-top: map-get($tabs, padding);
+        padding-bottom: map-get($tabs, padding);
+        padding-left: 0;
+        padding-right: 0;
+        
+        display: block;
+        background: none;
+        
+        color: map-get($tabs, color);
+        @include font-get(text-lg);
+
+        border-left: none;
+        border-top: none;
+        border-right: none;
+        border-bottom: 3px solid transparent;
+
+        &:hover, &:active {
+            color: map-get($tabs, active-color);
+            border-bottom: 3px solid map-get($tabs, active-color);
+        }
+
+        &.active {
+            color: map-get($tabs, active-color);
+            border-bottom: 3px solid map-get($tabs, active-color);
+        }
+
+        &:focus {
+            box-shadow: 0px 0px 2px 0 rgba(58, 118, 193, 0.5);
+            outline: none;
+        }
+    }
+
+    &__icon {
+        margin-right: 6px;
+    }    
+
+    &__column {
+        margin-bottom: 12px;
+    }
+
+    &__row {
+        margin-bottom: 24px;
+    }
+}

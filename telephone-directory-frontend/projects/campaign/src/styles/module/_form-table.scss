@@ -1,0 +1,30 @@
+.form-table {
+    width: 100%;
+
+    &__th {
+        padding-bottom: 6px;
+        color: color-get(text-dark, 300);
+        @include font-get(text-sm, normal);
+
+        &:not(:first-child) {
+            padding-left: 8px;
+        }
+
+        &:not(:last-child) {
+            padding-right: 8px;
+        }
+    }
+
+    &__td {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        
+        &:not(:first-child) {
+            padding-left: 8px;
+        }
+        
+        &:not(:last-child) {
+            padding-right: 8px;
+        }
+    }
+}

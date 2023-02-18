@@ -1,0 +1,71 @@
+<page-header title="Create User" showBack></page-header>
+
+<form [formGroup]="createUserForm" autocomplete="off" (validateAndSubmit)="submit($event)" class="bs-container-xs">
+    <section class="card">
+        <div class="card__body">
+            <div class="row">
+                <div class="col-md-5">
+                    <nd-form-field>
+                        <label ndLabel>Full Name</label>
+                        <input type="text" ndInput formControlName="name" placeholder="Full Name" name="Full name" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Username</label>
+                        <input type="text" ndInput formControlName="userName" placeholder="Enter a username"
+                            name="Mobile Number" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Email Address (Optional)</label>
+                        <input type="email" ndInput formControlName="emailAddress" placeholder="Enter your email address"
+                            name="Email" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Mobile Number (Optional)</label>
+                        <input type="text" ndInput formControlName="mobileNumber" placeholder="Enter your mobile number"
+                            name="Mobile number" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Set Password</label>
+                        <input type="password" ndInput formControlName="password" placeholder="Set a new password"
+                            name="Set Password" *togglePassword />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Confirm Password</label>
+                        <input type="password" ndInput formControlName="confirmPassword" placeholder="Retype your password"
+                            name="Confirmed Password" *togglePassword />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                </div>
+                <div class="col-md-7">
+                    <div class="notice notice--secondary">
+                        <h2 class="notice__title">
+                            <span icon="info-outline" class="notice__icon"></span>
+                            <strong>Choose a strong password by following these rules:
+                                Eg: abc1234
+                            </strong>
+                        </h2>
+                        <ol class="notice__list">
+                            <li *ngFor="let policy of passwordPolicy">{{policy}}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="button-group">
+            <div class="button-group__body">
+                <button type="submit" ndButton="primary" [loader]="!!pendingRequest" class="button-group__button">
+                    <nd-button-loader>Processing</nd-button-loader>Create
+                </button>
+                <button type="button" ndButton="outline" class="button-group__button" [routerLink]="routeToUser">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </section>
+</form>

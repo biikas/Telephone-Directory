@@ -1,0 +1,48 @@
+<nd-form-field [formGroup]="formGroup">
+
+    <label ndLabel>{{ props?.label }}</label>
+    <ng-container [ngSwitch]="props?.inputtype">
+        <div *ngSwitchCase="'CHECKBOX'">
+            <nd-checkbox *ngFor="let option of props?.options" [value]="option.value" [formControlName]="option.label">
+                {{ option.label }}</nd-checkbox>
+        </div>
+        <div ndRadioGroup *ngSwitchCase="'RADIO'" [formControlName]="props?.paramOrder">
+            <nd-radio *ngFor="let option of props.options" [value]="option.value">{{ option.label }}</nd-radio>
+        </div>
+        <ng-select *ngSwitchCase="'DROPDOWN'" [formControlName]="props?.paramOrder" [placeholder]="props?.placeHolder"
+            bindValue="value" bindLabel="label" class="select" [items]="props.options" [clearable]="false">
+            <ng-template ng-notfound-tmp let-searchTerm="searchTerm">
+                <div class="ng-option ng-option-disabled">
+                    <div class="ng-option-label">
+                        <span class="ng-option-label__title">No {{ props.label }} found
+                            <strong>{{ searchTerm }}</strong></span>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template ng-label-tmp let-option="item">
+                <div class="ng-value-label">
+                    <span class="ng-value-label__title">{{ option.label }}</span>
+                </div>
+            </ng-template>
+            <ng-template ng-option-tmp let-option="item">
+                <div class="ng-option-label">
+                    <span class="ng-option-label__title">{{ option.value }}</span>
+                </div>
+            </ng-template>
+        </ng-select>
+        <input type="text" *ngSwitchCase="'NUMERIC'" ndInput [formControlName]="props?.paramOrder"
+            [name]="props?.placeHolder || props.label" [placeholder]="props?.placeHolder" inputmode="numeric" />
+        <ng-container *ngSwitchCase="'MOBILE'">
+            <form-control-wrapper>
+                <input type="text" ndInput [formControlName]="props?.paramOrder"
+                    [name]="props?.placeHolder || props.label" [placeholder]="props?.placeHolder" inputmode="numeric" />
+                <button type="button" ndButton="text" size="icon" (click)="setMobileNumber(props?.paramOrder)" class="right">
+                    <span icon="user" gradient="primary" (click)="setMobileNumber(props?.paramOrder)"></span>
+                </button>
+            </form-control-wrapper>
+        </ng-container>
+        <input type="text" *ngSwitchDefault ndInput [formControlName]="props?.paramOrder"
+            [name]="props?.placeHolder || props.label" [placeholder]="props?.placeHolder" />
+    </ng-container>
+    <nd-message></nd-message>
+</nd-form-field>

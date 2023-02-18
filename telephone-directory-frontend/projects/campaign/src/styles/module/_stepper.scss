@@ -1,0 +1,94 @@
+.stepper {
+    display: block;
+
+    &__header {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding-left: spacing-get(card, x);
+        padding-right: spacing-get(card, x);
+        padding-top: 18px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid color-get(border, 200);
+    }
+
+    &__title {
+        @include font-get(text-sm, bold);
+        color: color-get(text-dark, 300);
+        margin-right: 18px;
+    }
+
+    &__steps {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+        flex-grow: 1;
+
+        display: flex;
+        align-items: center;
+    }
+
+    &__step {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding-left: 6px;
+        padding-right: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include font-get(text);
+        color: color-get(text-dark, 500);
+
+        &:not(:last-child)::after {
+            content: '';
+            flex-shrink: 0;
+            flex-basis: 12px;
+            max-width: 12px;
+            margin-left: 6px;
+            margin-right: 6px;
+            height: 1px;
+            background-color: color-get(border, 200);
+        }
+
+        &.active {
+            text-overflow: initial;
+
+            .stepper__position {
+                background-color: color-get(primary, 500);
+            }
+        }
+    }
+
+    &__position {
+        flex-shrink: 0;
+        flex-basis: 18px;
+        height: 18px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-left: 6px;
+        margin-right: 12px;
+        border-radius: 100px;
+        padding-left: 2px;
+        padding-right: 2px;
+        background-color: color-get(text-dark, 300);
+        @include font-get(text-sm, bold);
+        line-height: 1;
+        color: color-get(text-light, 500);
+    }
+
+    &__completed {
+        background-color: color-get(primary);
+        color: color-get(text-light);
+        text-align: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: block;
+        margin-right: 12px;
+        margin-left: 6px;
+    }
+}

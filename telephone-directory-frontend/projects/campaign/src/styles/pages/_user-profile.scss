@@ -1,0 +1,116 @@
+$profile: (
+    heading: (
+        font: (
+            size: pixel-to-rem(18),
+            line-height: 1.33,
+            weight: font-weight(medium),
+            family: font-family(secondary)
+        ),
+        color: color-get(text-dark),
+        margin: (
+            bottom: 0,
+        )
+    ),
+    sub-heading: (
+        font: (
+            size: pixel-to-rem(14),
+            line-height: 1.43,
+        ),
+        color: color-get(text-dark, 300),
+        margin: (
+            bottom: 0,
+            top: 4px
+        )
+    ),
+    element: (
+        font: (
+            size: pixel-to-rem(14),
+            line-height: 1.43,
+            weight: font-weight(medium),
+            family: font-family(secondary)
+        ),
+        color: color-get(text-dark),
+    )
+);
+
+.profile {
+    $heading: map-get($profile, heading);
+    $sub-heading: map-get($profile, sub-heading);
+    $element: map-get($profile, element);
+
+    &__icon-box-wrapper {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    &__icon-box {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__brand-sm {
+        width: 4.5em;
+    }
+
+    &__user-details {
+        padding-top: 0;
+        padding-bottom: 24px;
+
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__heading {
+        @include common-properties($heading);
+    }
+
+    &__sub-heading {
+        @include common-properties($sub-heading);
+    }
+
+    &__list {
+        list-style: none;
+
+        padding-left: 0;
+        margin-top: 34px;
+        margin-bottom: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+
+        max-width: 90%;
+        overflow: hidden;
+        word-break: break-word;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 12px;
+        }
+    }
+
+    &__element {
+        display: flex;
+
+        @include common-properties($element);
+    }
+
+    &__icon {
+        margin-right: 12px;
+        max-width: 20px;
+        flex-basis: 15%;
+        color: color-get(text-dark, 400);
+    }
+
+    &__button-group {
+        margin-top: 32px;
+    }
+
+    &__form {
+        max-width: 298px;
+    }
+}

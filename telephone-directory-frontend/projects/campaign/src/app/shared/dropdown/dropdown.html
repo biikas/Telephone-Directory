@@ -1,0 +1,8 @@
+<ng-content select="[dropdownTrigger]"></ng-content>
+<ng-template #content>
+    <div class="dropdown" [ngClass]="[size]">
+        <div class="dropdown__content" [attr.role]="{ menu: items?.length }" cdkFocusTrap cdkTrapFocusAutoCapture perfectScrollbar>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>

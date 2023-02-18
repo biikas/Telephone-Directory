@@ -1,0 +1,9 @@
+<label class="switch-button">
+    <input type="checkbox"
+        class="cdk-visually-hidden switch-button__input" 
+        [checked]="isChecked"
+        [disabled]="disabled"
+        (change)="onInputChange($event?.target?.checked)" 
+        />
+    <span class="switch-button__graphic"></span>
+</label>

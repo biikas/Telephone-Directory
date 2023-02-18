@@ -1,0 +1,20 @@
+.switch-label {
+    display: flex;
+    justify-content: space-between;
+    
+    &__label {
+        color: color-get(text-dark, 500);
+        @include font-get(text, bold);
+    }
+
+    &__helper {
+        display: block;
+        color: color-get(text-dark, 300);
+        @include font-get(text-sm, normal);
+    }
+
+    &__button {
+        max-width: 48px;
+        flex: 0 0 48px;
+    }
+}

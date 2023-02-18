@@ -1,0 +1,32 @@
+<section class="side-bar">
+    <a class="side-bar__logo" routerLink="/">
+        Phone Directory
+    </a>
+    <section class="side-bar__main">
+        <nav class="side-bar__menu" mainNav></nav>
+        <footer class="side-bar__footer user-profile">
+            <div class="user-profile__left">
+                <img src="assets/brand/sidebars-components-user-profile-icon.svg" alt="brand-icon">
+            </div>
+            <section class="user-profile__content">
+                <h2 class="user-profile__title">{{name}}</h2>
+                <p class="user-profile__text">Phone Directory</p>
+            </section>
+            <dropdown-menu>
+                <button ndButton="text" color="primary-inverted" size="icon" dropdownTrigger>
+                    <span icon="chevron-up-fill" size="20" class="user-profile__right"></span>
+                </button>
+                <button ndButton="text" dropdownItem [routerLink]="routeToUserProfile">
+                    <span icon="user-circle-outline" size="20" class="user-profile__icon"></span>
+                    View Profile
+                </button>
+               
+                <button ndButton="text" (click)="logOut($event)" dropdownItem>
+                    <span icon="sign-out-line" size="20" class="user-profile__icon"></span>
+                    Logout
+                </button>
+            </dropdown-menu>
+        </footer>
+    </section>
+    <ng-content></ng-content>
+</section>

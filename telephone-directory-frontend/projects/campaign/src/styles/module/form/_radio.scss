@@ -1,0 +1,63 @@
+$nd-radio: (
+    margin: (
+        bottom: 4px
+    ),
+    padding: (
+        x: 0,
+    ),
+    states: (
+        disabled: (
+            opacity: .3,
+        ),
+        hover: (
+            indicator: (
+                color: #4980fd,
+            )
+        ),
+        (checked, hover): (
+            indicator: (
+                color: #4980fd,
+            ),
+        ),
+        checked: (
+            indicator: (
+                icon: (
+                    border: 2px solid #fff,
+                )
+            )
+        )
+    ),
+    group: $nd-radio-group,
+    label: (
+        font: (
+            size: 14px,
+            line-height: 19px,
+        ),
+    ),
+    indicator: (
+        size: 20px,
+        margin: (
+            right: 10px
+        ),
+        radius: 50%,
+        font: (
+            line-height: 1
+        ),
+        color: #1c61fd,
+        states: (
+            focus: (
+                outline: #d1dffe auto 2px,
+            ),
+            active: (
+                color: #164eca,
+            ),
+        ),
+        icon: (
+            size: 16px,
+            radius: 50%,
+            border: 0 solid #fff,
+        )
+    )
+);
+
+@include nd-radio;

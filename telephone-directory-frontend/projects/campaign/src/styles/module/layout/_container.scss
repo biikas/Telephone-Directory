@@ -1,0 +1,48 @@
+// Container
+//
+// An extension of Bootstrap Library's `.container` class that centers the content
+// limited by a max-width
+//
+// Markup:
+// <div class="container {{modifier_class}}">
+//  ...
+// </div>
+//
+// .container--secondary - to decrease paddding to 3px.
+// .container--lg - a large size container(996px).
+// .container--md - a medium size container(740px).
+// .container--sm - a small size container(550px) .
+// .container--xs - an extra small size container(344px)/ center aligned.
+//
+// Styleguides Layout.Containers.container
+//
+
+.container {
+    &--secondary {
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    &--lg {
+        max-width: 996px;
+    }
+
+    &--md {
+        max-width: 740px;
+    }
+
+    &--sm {
+        max-width: 550px;
+    }
+
+    &--xs {
+        max-width: 344px;
+    }
+
+    // Adds bottom spacing to the segments in the container
+    //
+    // Styleguides Layout.Containers.container.spacer
+    &__segment {
+        margin-bottom: 24px;
+    }
+}

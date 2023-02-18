@@ -1,0 +1,16 @@
+.panel-header {
+    margin-bottom: 24px;
+    
+    &__title {
+        margin-bottom: 0;
+        color: color-get(text-dark);
+        @include font-get(text-lg);
+    }
+
+    &__description {
+        margin-top: 4px;
+        margin-bottom: 0;
+        color: color-get(text-dark, 300);
+        @include font-get(text-sm);
+    }
+}

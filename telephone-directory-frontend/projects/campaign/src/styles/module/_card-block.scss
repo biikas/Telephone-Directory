@@ -1,0 +1,36 @@
+.card-block {
+    background: rgba(color-get(border, 400), 0.16);
+
+    &__box {
+        --media--aspect-ratio: (16/9);
+    }
+
+    &__media {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    &__desc {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+        padding-top: 12px;
+        padding-right: 16px;
+        padding-bottom: 12px;
+        padding-left: 16px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    &__title {
+        color: color-get(primary);
+        @include font-get(text,bold);
+        margin-bottom: 6px;
+
+        @include media-breakpoint-up(lg) {
+            @include font-get(h6);
+        }
+    }
+
+    &__info {
+        @include font-get(text-sm);
+    }
+}

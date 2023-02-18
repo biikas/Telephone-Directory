@@ -1,0 +1,37 @@
+
+<page-header title="Users Detail" showBack *ngIf="!isLoading"></page-header>
+
+<page-loader [showLoader]="isLoading"></page-loader>
+
+<main class="two-column-grid" *ngIf="details">
+    <div class="two-column-grid__secondary">
+        <div class="card">
+            <header class="profile__icon-box-wrapper">
+                <div class="icon-box profile__icon-box">
+                    <img 
+                        [src]="appConstants.ASSETS.BRAND_SM" 
+                        [alt]="appConstants.APP_NAME" 
+                        class="icon-box__icon profile__brand-sm">
+                </div>
+            </header>
+            <section class="card__body profile__user-details">
+                <h3 class="profile__heading">{{details?.name}}</h3>
+                <p class="profile__sub-heading">{{details?.userName}}</p>
+                <ul class="profile__list">
+                    <li class="profile__item">
+                        <p class="profile__element">
+                            <span icon="mobile-outline" size="20" class="profile__icon"></span>
+                           {{details?.mobileNumber}}
+                        </p>
+                    </li>
+                    <li class="profile__item">
+                        <p class="profile__element">
+                            <span icon="envelope-outline" size="20" class="profile__icon"></span>
+                            {{ details?.emailAddress }}
+                        </p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</main>

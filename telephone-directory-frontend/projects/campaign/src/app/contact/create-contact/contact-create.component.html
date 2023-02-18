@@ -1,0 +1,60 @@
+<page-header title="Create Contact" showBack></page-header>
+
+<form [formGroup]="contactCreateForm" autocomplete="off" (validateAndSubmit)="submit($event)" class="bs-container-xs">
+    <section class="card">
+        <div class="card__body">
+            <div class="row">
+                <div class="col-md-5">
+                    <nd-form-field>
+                        <label ndLabel>First Name</label>
+                        <input type="text" ndInput formControlName="firstName" placeholder="First Name"
+                            name="First Name" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+
+                    <nd-form-field>
+                        <label ndLabel>Last Name</label>
+                        <input type="text" ndInput formControlName="lastName" placeholder="Last Name"
+                            name="Last Name" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Mobile Number</label>
+                        <input type="text" ndInput formControlName="mobileNumber" placeholder="mobileNumber"
+                            name="Mobile Number" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Email</label>
+                        <input type="text" ndInput formControlName="email" placeholder="Email" name="Email" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+
+                    <nd-form-field>
+                        <label ndLabel>Date Of Birth</label>
+                        <form-control-wrapper>
+                            <input type="text" ndInput formControlName="dateOfBirth" bsDatepicker autocomplete="off"
+                                name="Date of Birth" />
+                            <span icon="calendar-normal-outline" class="right"></span>
+                        </form-control-wrapper>
+                        <nd-message></nd-message>
+                    </nd-form-field>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="button-group">
+            <div class="button-group__body">
+                <button type="submit" ndButton="primary" [loader]="!!pendingRequest" class="button-group__button">
+                    <nd-button-loader>Processing</nd-button-loader>Create
+                </button>
+                <button type="button" ndButton="outline" class="button-group__button"
+                    [routerLink]="routeToCustomCbsConnection">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </section>
+</form>

@@ -1,0 +1,9 @@
+<header class="expandable-panel__pane">
+    <ng-content select="expandable-panel-header"></ng-content>
+    <button type="button" ndButton="outline" class="expandable-panel__trigger" (click)="toggle()">
+        {{ type }}
+    </button>
+</header>
+<section class="expandable-panel__body" *ngIf="isShown">
+    <ng-content></ng-content>
+</section>

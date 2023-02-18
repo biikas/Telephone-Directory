@@ -1,0 +1,12 @@
+$spacing: (
+    card: (
+        x: 24px,
+        y: 16px
+    )
+);
+
+@function spacing-get($name, $property) {
+    $module: map-get($spacing, $name);
+
+    @return map-get($module, $property);
+}

@@ -1,0 +1,100 @@
+@import '~@angular/cdk/overlay';
+
+@include cdk-overlay();
+
+$dropdown: (
+    radius: 3px,
+    border: 1px solid color-get(border, 400),
+    // padding: (
+    //     x: 10px,
+    //     y: 10px
+    // ),
+    bg-color: color-get(text-light),
+    arrow: (
+        size: 8px
+    ),
+    shadow: (0 4px 8px 0 rgba(0, 0, 0, 0.04), 0 8px 16px 0 rgba(0, 0, 0, 0.08)),
+    color: color-get(text-dark)
+);
+
+
+$arrow: map-get($dropdown, arrow);
+$arrow-size: map-get($arrow, size);
+
+.dropdown-container {
+    min-width: 220px;
+    margin-top: $arrow-size;
+    margin-bottom: $arrow-size;
+
+    &.down .dropdown{
+        &::before, &::after {
+            top: auto;
+            transform-origin: bottom;
+            transform: translateY(0) rotate(180deg);
+        }
+
+        &::before{
+            bottom: -1px;
+        }
+
+        &::after{
+            bottom: 1px;
+        }
+    }
+
+    &.hide .dropdown{
+        &::before, &::after {
+            display: none;
+        }
+    }
+}
+
+.dropdown {
+    width: 100%;
+    position: relative;
+
+    @include common-properties($dropdown);
+
+    &::before, &::after {
+        content: '';
+        border-style: solid;
+        border-width: $arrow-size;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: (nth(map-get($dropdown,border), 1));
+        right: $arrow-size;
+        transform: translateY(-100%);
+    }
+    
+    &::after {
+        border-color: transparent transparent color-get(text-light);
+    }
+
+    &::before {
+        border-color: transparent transparent nth(map-get($dropdown, border), 3);
+        top: -1px;
+    }
+    
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        padding: 10px;
+        max-height: 100%;
+        overflow: auto;
+        
+        position: relative;
+    }
+
+    &__item {
+        width: 100%;
+        justify-content: flex-start;
+        color: map-get($dropdown, color);
+        
+        &:not(:last-child) {
+            margin-bottom: 6px;
+        }
+    }
+}

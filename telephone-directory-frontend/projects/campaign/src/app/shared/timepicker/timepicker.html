@@ -1,0 +1,19 @@
+<div class="timepicker__slots" *ngFor="let field of fields">
+    <input type="text" ndInput class="timepicker__input" 
+        [value]="convertToTwoDigits(field.value, field.type)"
+        [placeholder]="field.placeholder"
+        (keydown)="onKeyDown($event, field.type)"
+        (input)="onInput($event?.target?.value, field.type)"
+        [required]="isRequired"
+        [disabled]="isDisabled"
+        #inputRef
+    />
+    <span class="timepicker__buttons">
+        <button type="button" class="timepicker__button" tabindex="-1" (click)="increment(field.type, inputRef)">
+            <span icon="chevron-up" size="16"></span>
+        </button>
+        <button type="button" class="timepicker__button" tabindex="-1" (click)="decrement(field.type, inputRef)">
+            <span icon="chevron-down" size="16"></span>
+        </button>
+    </span>
+</div>

@@ -1,0 +1,31 @@
+// Dialog Header Component
+// 
+// Header Styling for dialog box in an application
+// 
+// Markup
+// <header class="dialog-header">
+//     <span class="dialog-header__placeholder"></span>
+//     <h2 class="dialog-header__title">...</h2>
+// </header>
+//
+// Styleguides Modules.dialog-header
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 16px;
+
+    &:before {
+        content: '';
+        flex-basis: 36px;
+        max-width: 36px;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    &__title {
+        margin: auto;
+        @include font-get(h6, bold, secondary);
+    }
+}

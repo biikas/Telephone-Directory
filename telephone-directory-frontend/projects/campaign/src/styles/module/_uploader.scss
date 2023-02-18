@@ -1,0 +1,103 @@
+// Uploader
+//
+// Use this for file uploader component
+// consist of mainly three section 
+// one for file uploader section, another for progress bar and lastly for attatchment image
+// 
+// .uploader__wrapper - wraps the area of upload and progress bars
+// .uploader__icon-box - it wraps the icon which is shown on uploader area
+// .uploader__area - area to drop the files
+// .uploader__progress-bar-group - to wraps a multiple progress bar
+// .uploader__progress-bar - single progress bar consist of title, sub-title, button and a bar
+// .uploader__progress-top - to style the top part of the progress-bar element
+// .uploader__progress-title - to style the main text of the progress bar.
+// .uploader__progress-icon - to style the icon of the progress bar.
+// .uploader__progress-sub-title - to style the secondary text of the progress bar.
+// .uploader__attatchments - add margin top of 24px to the attatchment section
+// 
+// Styleguides Module.uploader
+
+.uploader {
+    display: block;
+
+    &.dragged-over &__area::after {
+        pointer-events: none;
+        opacity: 1;
+    }
+
+    &__wrapper {
+        border: 1px dashed color-get(border, 200);
+        border-radius: 3px;
+    }
+
+    &__image-box {
+        max-width: 64px;
+        margin-bottom: 24px;
+    }
+
+    &__area {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 285px;
+        text-align: center;
+
+        &::after {
+            content: 'Drop Your Files Here';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: color-get(text-light);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s ease-in;
+        }
+    }
+
+    &__progress-bar-group {
+        border-top: 1px dashed color-get(border, 200);
+        padding: 18px 30px 24px;
+    }
+
+    // :not(:last-child) - add margin bottom of 15px to all .uploader__progress-bar element except the last one.
+    &__progress-bar {
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__progress-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    &__progress-title {
+        @include font-get(text);
+        color: color-get(text-dark);
+    }
+
+    &__progress-icon {
+        margin-right: 5px;
+        color: color-get(text-dark, 400);
+    }
+
+    &__progress-sub-title {
+        margin-top: 5px;
+        color: color-get(text-dark, 400);
+        @include font-get(subtitles);
+    }       
+
+    &__thumbnails {
+        margin-top: 24px;
+    }
+}

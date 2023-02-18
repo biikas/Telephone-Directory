@@ -1,0 +1,81 @@
+$card: (
+    radius: 3px,    
+    bg-color: color-get(text-light),
+    shadow: 0 16px 48px -10px rgba(0, 0, 0, 0.06),
+    body: (
+        padding: (
+            x: spacing-get(card, x),
+            y: spacing-get(card, y),
+        ),
+    ),
+    footer: (
+        padding: (
+            x: spacing-get(card, x),            
+            y: spacing-get(card, y),
+        ),
+        border: (
+            top: 1px solid color-get(border, 200),
+        )
+    ),
+    space: spacing-get(card, x)
+);
+
+// Card
+// 
+// Use this for a block which consist of border, box-shadow, and text-content
+//
+// .card--wider - card block of width 420px.
+//
+//
+// Styleguides Component.card
+
+.card {
+    $body: map-get($card, body);
+    $footer: map-get($card, footer);
+    $table: map-get($card, table);
+    $border: map-get($footer, border);
+    $borders: map-get($border, top);
+    $space: map-get($card, space);
+    $padding: map-get($body, padding );
+
+    display: block;
+    @include common-properties($card);
+
+    &__body {
+        @include common-properties($body);
+
+        &--scrollable {
+            max-height: 75vh;
+            overflow: auto;
+        }
+    }
+
+    &__header {
+        padding: map-get($padding, y ) map-get($padding, x );
+        border-bottom: map-get($border, top);
+        font-weight: font-weight(bold);
+    }
+
+    &__expanded-border {
+        border-top: #{$borders};
+        width: calc(100% + #{$space} + #{$space});
+        margin-left: -#{$space};
+        margin-top: #{$space};
+        margin-bottom: #{$space};
+    }
+
+    &__footer {
+        @include common-properties($footer);
+    }
+
+    &__button {
+        & + & {
+            margin-left: 8px;
+        }
+    }
+    
+    &__title{
+        font-weight: font-weight(bold);
+        margin-bottom: 16px;
+    }
+}

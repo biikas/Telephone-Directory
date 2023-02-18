@@ -1,0 +1,50 @@
+<div class="container container--sm">
+    <header class="login__header">
+    </header>
+    <main class="login__form">
+        <div class="container container--xs">
+            <form [formGroup]="loginForm" (submit)="logIn()">
+                <h1 class="login__heading"><span class="login__emphasized">Login</span> to Continue</h1>
+                <nd-form-field>
+                    <form-control-wrapper>
+                        <span icon="user-outline"></span>
+                        <input 
+                            type="text" 
+                            name="Username"
+                            formControlName="username" 
+                            autofocus
+                            ndInput 
+                            placeholder="Username"
+                        />
+                    </form-control-wrapper>
+                    <nd-message></nd-message>
+                </nd-form-field>
+                <nd-form-field>
+                    <form-control-wrapper *togglePassword>
+                        <span icon="lock-outline"></span>
+                        <input 
+                            type="password" 
+                            name="Password"
+                            formControlName="password" 
+                            ndInput
+                            placeholder="Password"
+                        />
+                    </form-control-wrapper>
+                    <nd-message></nd-message>
+                </nd-form-field>
+                <button 
+                    type="submit" 
+                    ndButton="full"
+                    color="primary"
+                    [loader]="isProcessing" 
+                    [disabled]="loginForm.invalid"
+                    class="login__button"
+                >
+                    Login
+                    <nd-button-loader>Processing</nd-button-loader>
+                </button>
+            </form>
+        </div>
+        <p class="login__copyright">&copy; Phone Directory</p>
+    </main>
+</div>

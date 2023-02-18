@@ -1,0 +1,53 @@
+
+// Button Group Component
+//
+// Group of buttons stacked together.
+//
+// Markup
+// <div class="button-group {{modifier_class}}">
+//     <button class="button-group__btn" type="submit" ndButton="primary">Button Element</button>
+//     <button class="button-group__btn" type="button" ndButton="outline">Button Element</button>
+// </div>
+//
+// Modifier section
+// .button-group--align-center - Centered aligned stack of buttons.
+//
+// Styleguides Module.button-group
+
+$button-group: (
+    body: (
+        padding: (
+            x: 24px,
+            y: 16px
+        ),
+        border: (
+            top: 1px solid color-get(border, 200)
+        ),
+        size: (
+            width: 100%
+        )
+    )
+);
+
+.button-group {
+    display: flex;
+
+    &__body {
+        $body: map-get($map: $button-group, $key: body);
+        @include common-properties($body);
+    }
+
+    &__button {
+        &:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+
+    &--align-center {
+    	justify-content: center;
+    }
+
+    &--spacing {
+        margin-top: 18px;
+    }
+}

@@ -1,0 +1,16 @@
+<ul class="tabs__list"
+    [class.tabs__list--align-center]="alignCenter">
+    <li class="tabs__menu"
+        *ngFor="let tab of tabs.toArray()">
+        <button class="tabs__links"
+            (click)="selectTab(tab)"
+            [class.active]="tab.active">
+            <span [icon]="tab.tabIcon"
+                class="tabs__icon"
+                *ngIf="tab.tabIcon"></span>
+            {{tab.name}}
+        </button>
+    </li>
+</ul>
+
+<ng-template [cdkPortalOutlet]="activePortal"></ng-template>

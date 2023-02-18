@@ -1,0 +1,69 @@
+// Notice Layout
+//
+// Looks like a notice in application. It consists of main title and subheading.
+// 
+// Markup:
+// Notice Module
+// <div class="notice {{modifier_class}}">
+// <h2 class="notice__title"> ... </h2>
+// <p class="notice__text"> ... </p>
+// </div>
+//
+// Notice Modifier section
+// .notice--error - For error message.
+//
+// Styles modules.notice
+
+.notice {
+    border-radius: 3px;
+    border: 1px solid color-get(info, 300);
+    padding: 19px 24px;
+    background: color-get(info, 100);
+    color: color-get(info);
+    @include font-get(text);
+    text-align: left;
+
+    &--spacing {
+        margin-bottom: 16px;
+    }
+
+    &--secondary{
+        max-width: 450px;
+        margin-left: auto;
+    }
+
+    &__icon {
+        margin-right: 6px;
+    }
+
+    &__title {
+        margin-bottom: 16px;
+        margin-top: 0;
+        @include font-get(text,normal);
+
+        &--no-spacing {
+            margin-bottom: 0;
+        }
+    }
+
+    &__text {
+        margin: 0;
+    }
+
+    &--error {
+        border: 1px solid color-get(error, 300);
+        background: color-get(error, 100);
+        color: color-get(error);
+    }
+
+    &--success {
+        border: 1px solid color-get(success, 300);
+        background: color-get(success, 100);
+        color: color-get(success);
+    }
+
+    &__list {
+        padding-left: 24px;
+        margin-bottom: 0;
+    }
+}

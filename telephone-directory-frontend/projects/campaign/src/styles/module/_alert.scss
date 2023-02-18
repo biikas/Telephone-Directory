@@ -1,0 +1,125 @@
+$alert: (
+    padding: 12px,
+    border: (
+        right: 1px solid color-get(text-dark, 400),
+        y: 1px solid color-get(text-dark, 400),
+        left: 4px solid color-get(text-dark, 400),
+    ),
+    radius: 3px,
+    color: color-get(text-dark),
+    bg-color: color-get(text-light),
+    shadow: 0 12px 18px 0 rgba(0, 0, 0, 0.16),
+);
+
+//
+// Alert
+// 
+// To bring a message to attention.
+//
+// .success - to convey a success message
+// .error - to convey a failure message
+// .warn - to warn with a message
+// .info - to convey a informative message
+//
+// Markup
+//  <div class="alert {{modifier_class}}>
+//      <span class="alert__icon-container">
+//          <span class="alert__icon"></span>
+//      </span>
+//      <span class="alert__content">
+//          <span class="alert__title">
+//              ...
+//          </span>
+//          <span class="alert__message">
+//              ...
+//          </span>
+//      </span>
+//      <button type="button" class="alert__close-button alert__close-button--{{modifier_class}}">
+//          ...
+//      </button>
+//  </div>
+//
+// Styleguides Modules.Alert
+
+// For pop up alerts
+.is-floating {
+    padding: 0;
+}
+
+.alert {
+    $name: #{&};
+
+    display: flex;
+    padding-left: 24px;
+    border-left-width: 5px;
+    @include common-properties($alert);
+
+    &--spacing {
+        margin-bottom: 24px;
+    }
+
+    &.success {
+        border-color: color-get(success);
+        background-color: color-get(success, 100);
+
+        #{$name}__icon {
+            color: color-get(success);
+        }
+    }
+
+    &.error {
+        border-color: color-get(error);
+        background-color: color-get(error, 100);
+        
+        #{$name}__icon {
+            color: color-get(error);
+        }
+    }
+
+    &.warn {
+        border-color: color-get(warn);
+        background-color: color-get(warn, 100);
+        
+        #{$name}__icon {
+            color: color-get(warn);
+        }
+    }
+
+    &.info {
+        border-color: color-get(info);
+        background-color: color-get(info, 100);
+        
+        #{$name}__icon {
+            color: color-get(info, 700);
+        }
+    }    
+
+    &__icon-container {
+        flex-shrink: 0;
+    }
+
+    &__close-button {
+        flex-shrink: 0;    
+    }
+
+    &__content {
+        flex-grow: 1;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    &__title {
+        display: block;
+        margin-bottom: 4px;
+        @include font-get(text-lg, bold);
+    }
+
+    &__message {
+        @include font-get(text);    
+    }
+}
+
+// Overrides default styling of mat-snack-bar-container
+.cdk-overlay-container .mat-snack-bar-container {
+    max-width: 640px;
+ }

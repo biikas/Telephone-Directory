@@ -1,0 +1,16 @@
+<ul class="main-nav">
+    <ng-container *ngFor="let menu of authorizedMenu">
+        <li class="main-nav__item">
+            <a class="main-nav__link" [routerLink]="menu.path" routerLinkActive="active" #rla="routerLinkActive">
+                <span class="main-nav__icon">
+                    <img 
+                        [srcset]="rla.isActive ? menu?.icon?.active : menu?.icon?.inactive"
+                        [src]="rla.isActive ? menu?.icon?.active : menu?.icon?.inactive" 
+                        [alt]="menu.name"
+                        class="main-nav__img"/>  
+                </span>
+                {{menu.name}}
+            </a>
+        </li>
+    </ng-container>        
+</ul>

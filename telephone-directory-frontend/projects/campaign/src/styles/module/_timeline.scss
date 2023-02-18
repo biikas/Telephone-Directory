@@ -1,0 +1,148 @@
+$timeline: (
+    flag-width: 140px,
+    circle: 16px,
+    line-width: 2px,
+    spacing: 18px
+);
+
+$gutter: map-get($timeline, circle) / 2 + map-get($timeline, spacing);
+
+.timeline {
+    padding-top: 58px;
+    padding-bottom: 58px;
+    position: relative;
+
+    &__list {
+        display: flex;
+        margin-bottom: 58px;
+        align-items: center;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__line {
+        position: absolute;
+        left: map-get($timeline, flag-width) + $gutter;
+        top: 0;
+        display: block;
+        width: map-get($timeline, line-width);
+        height: 100%;
+        background: color-get(border, 200);
+        z-index: 1;
+
+        &:before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            display: block;
+            border: solid 1px color-get(border, 600);
+            background-color: color-get(primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 50%;
+            transform: translate(50%, 0);
+        }
+
+        &:after {
+            content: '';
+            width: 7px;
+            height: 7px;
+            display: block;
+            border: solid 1px color-get(border, 600);
+            background-color: color-get(primary);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translate(50%, 0);
+        }
+    }
+
+    &__flag-wrapper {
+        padding-right: $gutter;
+        position: relative;
+        width: map-get($timeline, flag-width) + $gutter + (map-get($timeline, line-width))/2;
+    }
+
+    &__flag {
+        display: inline-block;
+        position: relative;
+        border: 1px solid color-get(default, 700);
+        border-radius: 2px;
+        border: solid 1px color-get(border, 400);
+        background-color: color-get(text-dark, 100);
+        color: color-get(text-dark);
+        padding-top: 6px;
+        padding-right: 10px;
+        padding-bottom: 6px;
+        padding-left: 10px;
+        @include font-get(text-sm);
+        min-width: map-get($timeline, flag-width);
+        text-align: left;
+
+        &:before {
+            content: '';
+            display: block;  
+            position: absolute;
+            left: 100%;
+            bottom: 50%;
+            transform: translateY(50%);
+            width: 0;
+            height: 0;
+            border: 7px solid transparent;
+            border-left-color: color-get(border, 400);
+        }
+
+        &:after {
+            content: '';
+            display: block;  
+            position: absolute;
+            left: 99.9%;
+            bottom: 51%;
+            transform: translateY(51%);
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-left-color: color-get(text-dark, 100);
+        }
+    }
+
+    &__info {
+        padding-left: $gutter;
+    }
+
+    &__circle {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(50%,-50%);
+        z-index: 2;
+
+        width: map-get($timeline, circle);
+        height: map-get($timeline, circle);
+        border: solid 1px color-get(default, 200);
+        background-color: color-get(default, 200);
+        border-radius: 50%;
+    
+        &.success {
+            background-color: color-get(success);
+        }
+    
+        &.warn {
+            background-color: color-get(warn);
+        }
+    
+        &.error {
+            background-color: color-get(error);
+        }
+    }
+}
+
+
+
+
+
+

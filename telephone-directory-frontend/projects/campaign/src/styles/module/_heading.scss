@@ -1,0 +1,61 @@
+// Heading
+// 
+// Suitable for section heading.
+// 
+// Styleguide Component.Heading
+
+$heading: (
+    font: (
+        size: pixel-to-rem(18),
+        line-height: 1.33,
+        weight: font-weight(medium),
+        family: font-family(secondary)
+    ),
+    margin: (
+        bottom: 24px
+    ),
+    color: color-get(text-dark)
+);
+
+.heading {
+    @include common-properties($heading);
+
+    // style the main title of the block
+    // 
+    // .heading__title--secondary - to adds display flex and align items center to the title
+    // .heading__title--medium - to add font size of h5 and font weight bold to the title
+    // .heading__title--small - to add font size of text
+    // 
+    // Styleguide Component.Heading.Title
+    &__title {
+        @include font-get(text-lg, bold, secondary);
+        margin-bottom: 0;
+
+        // &--secondary {
+        //     display: flex;
+        //     align-items: center;
+        // }
+
+        // &--medium {
+        //     @include font-get(h5);
+        // }
+
+        // &--small {
+        //     @include font-get(text, normal);
+        // }
+    }
+
+    // style the icon of the heading block
+    // 
+    // .heading__icon--alt - to remove the right space of the icon
+    // 
+    // No styleguide reference
+    &__icon {
+        margin-right: 6px;
+        color: color-get(text-dark, 400);
+
+        // &--alt {
+        //     margin-right: 0;
+        // }
+    }
+}

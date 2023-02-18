@@ -1,0 +1,27 @@
+<section class="brief otp brief--text-left">
+    <header class="otp__segment">
+        <p class="brief__title brief__title--small">
+            Enter OTP Code
+        </p>
+        <p class="brief__details brief__details--light">
+            A verification code has been sent to the payee's mobile number. Please get it from the payee and enter it below.
+        </p>
+    </header>
+    <form [formGroup]="formGroup" class="otp__form">
+        <nd-form-field>
+            <otp-field
+                formControlName="otp"
+                name="OTP Code"
+            ></otp-field>
+            <nd-message></nd-message>
+        </nd-form-field>
+    </form>
+    <footer class="button-group button-group--no-spacing">
+        <button type="submit" ndButton="primary" class="button-group__btn" [loader]="loader">
+            Continue
+            <nd-button-loader>Processing</nd-button-loader>
+        </button>
+        <button type="button" ndButton="outline" class="button-group__btn" (click)="process('cancel')">Reject</button>
+    </footer>
+</section>
+

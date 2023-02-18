@@ -1,0 +1,118 @@
+$pagination: (
+    btn: (
+        size: (
+            height: 20px
+        ),
+        radius: 2px,
+        padding: 0,
+        font:(
+            size: pixel-to-rem(12px),
+            line-height: 1,
+            family: font-family(secondary)
+        )
+    ),
+    text: (
+        font: (
+            size: pixel-to-rem(12px),
+            line-height: (16/12),
+            family: font-family(secondary)
+        ),
+        color: color-get(text-dark, 400),
+    )
+
+);
+
+.pagination {
+    @include common-properties($pagination);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    @include media-breakpoint-up(sm) {
+        flex-direction: row;
+    }    
+
+    &--align-center {
+        display: flex;
+        justify-content: center;                                
+        align-items: center
+    }
+
+    &__content {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+
+        &--align-center {
+            justify-content: center;
+            width: 100%;
+        }
+    }
+
+    &__button {
+        min-width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        $button: map-get($pagination, btn);
+        @include common-properties($button);
+    }
+
+    &__item {
+        height: 20px;
+        &:not(:last-child) {
+            margin-right: 6px;
+        }
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+
+        $text: map-get($pagination, text);
+        @include common-properties($text);
+        margin-bottom: 20px;
+
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__select-wrapper {
+        display: flex;
+        align-items: center;
+        margin-right: 32px;
+    }
+
+    &__select.ng-select {
+        width: 58px;
+        margin-left: 10px;
+        padding-right: 0;
+        padding-left: 8px;
+        padding-top: 0;
+        padding-bottom: 0;
+        @include font-get(text-sm);
+        
+        .ng-arrow-wrapper {
+            width: 18px;
+            height: 18px;
+        }
+
+        .ng-arrow-wrapper .ng-arrow {
+            width: 7px;
+            height: 7px;
+        }
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: map-get($table, color);
+        @include font-get(text-sm, normal);
+    }
+}
+

@@ -1,0 +1,11 @@
+.back-button {
+	display: flex;
+    align-items: center;
+
+	@include font-get(h6, bold);
+	cursor: pointer;
+
+	&__icon {
+		margin-right: 8px;
+	}
+}

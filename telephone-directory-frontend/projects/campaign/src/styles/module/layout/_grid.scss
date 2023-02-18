@@ -1,0 +1,153 @@
+// Grid Gutter Modifiers
+//
+// An extension of Bootstrap Library's `.row` and `.col` classes for 12 column groups.
+// .row-secondary - to decrease padding to 3px.
+// .col-secondary - to decrease padding to 3px.
+//
+// Styleguides Layout.Grid.bootstrap-gutter-modifier
+//
+
+.row-secondary {
+    margin-right: -3px;
+    margin-left: -3px;
+}
+
+.col-secondary {
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+
+// Two Column Grid
+//
+// Divide a page into two columns - one of which takes up fixed width while the other one
+// takes up the rest.
+//
+// Markup:
+//  <div class="two-column-grid">
+//      <div class="two-column-grid__content">
+//          ...
+//      </div>
+//      <div class="two-column-grid__secondary">
+//          ...
+//      </div>
+//  </div>
+// 
+// Styleguides Layout.Grid.two-column-grid
+
+$margin: 15px;
+$gutter: 7px;
+
+.two-column-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+    @include media-breakpoint-up(md) {
+        margin-left: -$gutter;
+        margin-right: -$gutter;
+    }
+
+    @include media-breakpoint-up(lg) {
+        flex-direction: row;
+    }
+
+    @include media-breakpoint-up(xxl) {
+        max-width: 1920px;
+    }
+
+    &__content {
+        flex-grow: 1;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+
+        @include media-breakpoint-up(md) {
+            margin-right: $gutter;
+            margin-left: $gutter;
+            margin-bottom: 0; 
+        }
+
+        &--gradient-border {
+            border-image: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0), 
+                rgba(0, 0, 0, 0.2), 
+                rgba(0, 0, 0, 0)
+            ) 1 100%;
+            border-right: 1px solid; 
+        }
+
+        &--narrow {
+            @include media-breakpoint-up(md) {
+                max-width: 448px;
+                flex-basis: 41.6666666667%;
+                margin-right: $gutter;
+                margin-left: $gutter;
+            }
+        }
+    }
+
+    &__secondary {
+        flex-basis: 100%;
+        max-width: 100%;
+        flex-shrink: 2;
+
+        @include media-breakpoint-up(md) {
+            flex-basis: 440px;
+            max-width: 440px;
+            margin-right: $gutter;
+            margin-left: $gutter;
+        }
+
+        &--wider {
+            @include media-breakpoint-up(md) {
+                max-width: 497px;
+                flex-basis: 40%;
+                margin-right: $gutter;
+                margin-left: $gutter;
+            }
+        }
+    }
+
+    &__segment {
+        margin-bottom: $gutter;
+    }
+    
+    &__division {
+        margin-bottom: 12px;
+    }
+}
+
+.grid-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -6px;
+    margin-left: -6px;
+
+    &--alignment {
+        justify-content: center;
+    }
+
+    &__col-box {
+        position: relative;
+        width: 100%;
+        padding-right: 6px;
+        padding-left: 6px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+
+        &--sm {
+            flex: 0 0 33.3333333333%;
+            max-width: 356px;
+            min-width: 238px;
+        }
+
+        &--xs {
+            flex: 0 0 20%;
+            max-width: 242px;
+            min-width: 200px;
+        }
+    }
+}

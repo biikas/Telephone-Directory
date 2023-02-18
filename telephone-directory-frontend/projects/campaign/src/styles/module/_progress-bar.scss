@@ -1,0 +1,38 @@
+$progress: (
+    size: (
+        height: 3px
+    ),
+    radius: 2px,
+    bg-color: color-get(border, 100),
+
+    bar: (
+        size: (
+            height: 100%,
+        ),
+        bg-color: color-get(warn),
+        shadow: inset 0 -1px 0 rgba(0,0,0,.15),
+        color: color-get(text-light)
+    )
+);
+
+.progress-bar {
+    display: block;
+    overflow: hidden;
+
+    @include common-properties($progress);    
+
+    &.error &__bar {
+        background-color: color-get(error);
+    }
+
+    &.success &__bar {
+        background-color: color-get(success);
+    }
+
+    &__bar {
+        $bar: map-get($progress, bar);
+
+        @include common-properties($bar);
+	    @include font-get(text-sm);
+    }
+}

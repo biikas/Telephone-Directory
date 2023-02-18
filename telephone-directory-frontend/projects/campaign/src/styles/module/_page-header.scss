@@ -1,0 +1,61 @@
+// Page Header Component
+// 
+// Use to differentiate the main heading text of an application. 
+// Incorporate a back button if needed.
+// Apt for page header with a button alongside as well.
+// 
+// Markup
+// <div class="page-header">
+	// 	<button class="page-header__back-button">...</button>
+	// 	<h1 class="page-header__title">...</h1>
+	// 	<div class="page-header__link page-header__link--alt">...</div>
+// </div>
+// 
+// Styleguides.Modules.page-header
+
+$page-header: (
+	padding: (
+		y: 20px
+	),
+	title: (
+		font: (
+			size: pixel-to-rem(22),
+			line-height: 1.45,
+			family: font-family(secondary),
+			weight: font-weight(medium)
+		),
+		color: color-get(text-dark)
+	)
+);
+
+.page-header {
+	$title: map-get($page-header, title);
+
+	display: flex;
+	align-items: center;
+
+	@include common-properties($page-header);
+
+	&__back-button {
+		background: transparent;
+		border: none;
+		padding: 0;
+
+		color: color-get(text-dark, 300);
+		margin-right: 8px;
+	}
+
+    &__left {
+        display: flex;
+    }
+
+	&__title {
+		@include common-properties($title);
+	}
+
+	&--secondary {
+		display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	}
+}

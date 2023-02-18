@@ -1,0 +1,51 @@
+<page-header title="Modify User Details" showBack></page-header>
+
+<page-loader [showLoader]="isLoading"></page-loader>
+
+<form [formGroup]="editUserForm" (validateAndSubmit)="submit($event)" class="bs-container-xs" *ngIf="!isLoading">
+    <section class="card">
+        <div class="card__body">
+            <div class="row">
+                <div class="col-md-5">
+                    <nd-form-field>
+                        <label ndLabel>Mobile Number</label>
+                        <input type="text" ndInput formControlName="userName" placeholder="Mobile Number"
+                            name="Mobile Number" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Full Name</label>
+                        <input type="text" ndInput formControlName="name" placeholder="Full Name" name="Full name" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Email Address (Optional)</label>
+                        <input type="email" ndInput formControlName="emailAddress" placeholder="Email Address"
+                            name="Email" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field>
+                        <label ndLabel>Mobile Number (Optional)</label>
+                        <input type="text" ndInput formControlName="mobileNumber" placeholder="Mobile Number"
+                            name="Mobile number" />
+                        <nd-message></nd-message>
+                    </nd-form-field>
+                    <nd-form-field class="nd-form-field nd-form-field--flex">
+                        <label ndLabel class="nd-label">Status</label>
+                        <switch-button formControlName="active"></switch-button>
+                    </nd-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="button-group">
+            <div class="button-group__body">
+                <button type="submit" ndButton="primary" [loader]="!!pendingRequest" class="button-group__button">
+                    <nd-button-loader>Processing</nd-button-loader>Submit
+                </button>
+                <button type="button" ndButton="outline" class="button-group__button" [routerLink]="routeToUser">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </section>
+</form>

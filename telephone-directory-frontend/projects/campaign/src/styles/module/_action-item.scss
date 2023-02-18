@@ -1,0 +1,30 @@
+.action-item {
+    display: block;
+    text-align: center;
+    color: color-get(primary);
+    border: 1px solid color-get(primary, 300);
+    border-radius: 16px;
+    padding: 60px 8px 24px;
+    height: 100%;
+    animation: 0.3s ease;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: color-get(primary, 600);
+        background-color: color-get(primary);
+        color: color-get(text-light);
+    }
+
+    &__title {
+        display: block;
+        margin-top: 35px;
+        @include font-get(h6, bold);
+        margin-bottom: 6px;
+    }
+
+    &__sub-title {
+        display: block;
+        line-height: 1;
+    }
+}

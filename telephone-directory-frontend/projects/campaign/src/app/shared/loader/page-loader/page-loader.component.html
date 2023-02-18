@@ -1,0 +1,11 @@
+<div class="loader" *ngIf="showLoader">
+    <div class="loader__title">
+        {{loaderText}}
+    </div>
+    <div class="loader__bar">
+        <div class="loader__marker"></div>
+    </div>
+</div>
+<ng-container *ngIf="!showLoader">
+    <ng-content></ng-content>
+</ng-container>

@@ -1,0 +1,571 @@
+// Bordered Card Component
+//
+// A card with a border.
+//
+// Markup
+// <div class="bordered-card">
+//    <div class="bordered-card__details">
+// 			Bordered Card element
+//    </div>
+// </div>
+//
+// Styleguide Modules.bordered-card
+
+$bordered-card: (
+    padding: (
+        x: 24px,
+        y: 16px,
+    ),
+    radius: 3px,
+    border: 1px solid color-get(border, 200),
+    bg-color: color-get(text-light),
+    color: color-get(text-dark, 400),
+    margin: (
+        bottom: 6px,
+    ),
+    shadow: 0 16px 48px -10px rgba(0, 0, 0, 0.08),
+    subtitles: (
+        font: (
+            size: pixel-to-rem(12px),
+            line-height: 1.5,
+        ),
+        margin: (
+            top: 4px,
+            bottom: 0,
+        ),
+    ),
+    titles: (
+        margin: 0,
+        color: color-get(text-dark),
+        font: font-get(text-lg, null, secondary),
+    ),
+    list: (
+        padding: (
+            x: 24px,
+            y: 16px,
+        ),
+    ),
+    extension: (
+        padding: (
+            x: 16px,
+            y: 12px,
+        ),
+        margin: 0,
+        border: (
+            bottom: 1px solid color-get(border, 200),
+        ),
+    ),
+    secondary-titles: (
+        color: color-get(text-dark, 400),
+        font: font-get(text-lg, null, secondary),
+    ),
+    main-title: (
+        color: color-get(text-dark),
+        font: font-get(h5, null, secondary),
+    ),
+);
+
+.bordered-card {
+    $name: &;
+    $subtitles: map-get($bordered-card, subtitles);
+    $titles: map-get($bordered-card, titles);
+
+    $card-active: background-get(card, active);
+    $card-inactive: background-get(card, inactive);
+    $card-hover: background-get(card, hover);
+    $card-bg-color: background-get(card, bg-color);
+
+    @include common-properties($bordered-card);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    transition: all 0.25s cubic-bezier(.17,.67,.83,.67);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        box-shadow:  0 3px 22px 5px rgba(0, 0, 0, 0.08);
+        border: 1px solid color-get(border, 400);
+        color: inherit;
+
+        .bordered-card__arrow{
+            opacity: 1;
+            margin-right: 0;
+        }
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2px rgba(color-get(primary, 400), 0.5);
+        border: 1px solid transparent;
+        outline: transparent;
+    }
+
+    &.active {
+        background-color: $card-bg-color;
+        background-image: url($card-active);
+        background-repeat: repeat;
+        background-size: contain;
+        color: color-get(text-dark);
+
+        .bordered-card__titles,
+        .bordered-card__subtitles,
+        .bordered-card__main-title,
+        .bordered-card__secondary-titles {
+            color: color-get(text-dark);
+        }
+
+        .bordered-card__arrow {
+            opacity: 1;
+            margin-right: 0;
+        }
+
+        .bordered-card__tab-badge {
+            background-color: color-get(text-light);
+            color: $card-bg-color;
+        }
+    }
+
+    @at-root .is-loading {
+        #{$name}.active {
+            .bordered-card__titles,
+            .bordered-card__subtitles,
+            .bordered-card__main-title,
+            .bordered-card__secondary-titles {
+                color: transparent;
+                border-width: 0;
+                background-image: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                box-shadow: none;
+            }
+        }
+
+        #{$name}__info {
+            @include skeleton(240px, 32px);
+
+            &--small {
+                width: 120px;
+                height: 20px;
+            }
+
+            #{$name}__titles, #{$name}__subtitles {
+                display: none;
+            }
+        }
+
+        #{$name}__subtitles {
+            @include skeleton(auto, 14px);
+        }
+
+        #{$name}__titles {
+            display: inline-block;
+            margin-top: 2px;
+            @include skeleton(160px, 24px);
+
+            &--small {
+                width: 100px;
+            }
+        }
+
+        #{$name}__secondary-titles {
+            display: inline-block;
+            @include skeleton(240px, 24px);
+        }
+    }
+
+    &--tertiary {
+        flex-direction: column;
+        align-items: stretch;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &:hover {
+            border: 1px solid $card-bg-color;
+        }
+
+    }
+
+    &--dimensions {
+        height: 100%;
+        align-items: center;
+        position: relative;
+    }
+
+    &--no-highlight {
+        cursor: auto;
+
+        &:hover,
+        &:focus {
+            box-shadow: map-get($bordered-card, shadow);
+            border: map-get($bordered-card, border);
+        }
+    }
+
+    &--align-center {
+        padding-left: 0;
+        align-items: center;
+    }
+
+    &__details {
+        $list: map-get($bordered-card, list);
+        @include common-properties($list);
+
+        &--secondary {
+            display: flex;
+            justify-content: space-between;
+        }
+        &--tertiary {
+            border-bottom: map-get($bordered-card, border);
+        }
+
+        &--spacing {
+            padding-top: 28px;
+            padding-right: 32px;
+            padding-bottom: 28px;
+            padding-left: 0;
+        }
+
+        &--equal-spacing {
+           padding: 10px
+        }
+
+    }
+
+    &__subtitles {
+        @include common-properties($subtitles);
+
+        display: flex;
+
+        &--large {
+            @include font-get(text);
+        }
+
+        &--alt {
+            @include font-get(text, normal, secondary);
+            color: color-get(text-dark);
+        }
+
+        &--tertiary{
+            color: color-get(text-dark);
+        }
+
+        &--secondary {
+            display: inherit;
+        }
+
+        &--right-spacing {
+            margin-right: 16px;
+        }
+    }
+
+    &__icon {
+        margin-right: 6px;
+        &--secondary{
+            max-width: 24px;
+            width: 100%;
+        }
+        &--warn{
+            color: color-get(warn);
+        }
+    }
+
+    &__arrow {
+        opacity: 0;
+        margin-right: 8px;
+        transition: margin-right 0.25s cubic-bezier(.17,.67,.83,.67);
+    }
+
+    &__titles {
+        text-overflow: ellipsis;
+        word-break: break-word;
+
+        @include common-properties($titles);
+
+        &--large {
+            @include font-get(h3);
+        }
+
+        &--large-alt {
+            @include font-get(h4, bold);
+            margin-bottom: 1rem;
+        }
+
+        &--medium {
+            @include font-get(h6);
+        }
+
+        &--small {
+            @include font-get(text);
+        }
+
+        &--secondary {
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        &--tertiary {
+            margin-bottom: 4px;
+            display: block;
+        }
+    }
+
+    &__section {
+        display: block;
+
+        &.right {
+            margin-left: 12px;
+        }
+
+        &.left {
+            margin-right: 12px;
+            text-align: left;
+        }
+
+        &.middle {
+            margin-left: auto;
+        }
+
+        &.flex-end {
+            align-self: flex-end;
+        }
+    }
+
+    &__secondary-titles {
+        $secondary-titles: map-get($bordered-card, secondary-titles);
+        @include common-properties($secondary-titles);
+        align-self: flex-start;
+    }
+
+    &__info {
+        color: map-get($bordered-card, color);
+        @include font-get(text-lg, normal);
+        margin-bottom: 0;
+        text-align: left;
+
+        &--small {
+            @include font-get(text);
+        }
+
+        &--secondary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        &--block {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 6px;
+        }
+
+        &--align-start {
+            align-items: flex-start;
+            margin-bottom: 0;
+        }
+    }
+
+    &__list-wrapper {
+        $list: map-get($bordered-card, list);
+        @include common-properties($list);
+    }
+
+    &__list {
+        $list: map-get($bordered-card, list);
+        @include common-properties($list);
+
+        border-top: map-get($bordered-card, border);
+        margin: 0;
+        list-style: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        &--secondary {
+            border-bottom: map-get($bordered-card, border);
+        }
+
+        &--tertiary {
+            border-top: none;
+        }
+    }
+
+    &__item {
+        flex-grow: 1;
+        width: 33.3333%;
+
+        &--align-right {
+            text-align: right;
+        }
+
+        &--secondary {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__segment {
+        margin-bottom: 8px;
+        text-align: left;
+    }
+
+    &__logos {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 28px;
+
+        &--alt {
+            margin-bottom: 12px;
+        }
+    }
+
+    &__logo {
+        width: 102px;
+        height: 24px;
+    }
+
+    &__secondary-logo {
+        width: 48px;
+        height: 16px;
+    }
+
+    &__img {
+        object-fit: contain;
+    }
+
+    &__main-title {
+        $main-title: map-get($bordered-card, main-title);
+        @include common-properties($main-title);
+
+        align-self: flex-start;
+        letter-spacing: 2px;
+
+        &--secondary {
+            @include font-get(h6, bold, secondary);
+            color: $card-bg-color;
+            letter-spacing: normal;
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &--secondary {
+            margin-top: 16px;
+        }
+
+        &--wrap {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__row {
+        display: flex;
+        margin-bottom: 14px;
+        justify-content: space-between;
+        align-items: center;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &--secondary {
+            margin-bottom: 0;
+        }
+    }
+
+    &__col {
+        flex-basis: 50%;
+        max-width: 50%;
+        text-align: left;
+
+        &:not(:last-child) {
+            margin-right: 6px;
+        }
+
+        &--secondary {
+            flex-basis: inherit;
+            max-width: inherit;
+        }
+
+        &--text-right {
+            text-align: right;
+        }
+    }
+
+    &__align-center {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__align-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-left: auto;
+    }
+
+    &__text-right {
+        text-align: right;
+    }
+
+    &__extension {
+        display: block;
+
+        $extension: map-get($bordered-card, extension);
+        @include common-properties($extension);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__dash-border {
+        border-bottom: 1px dashed color-get(border, 200);
+    }
+
+    &__footer {
+        margin-top: 0;
+        padding: 24px;
+    }
+
+    &__avatar {
+        margin-right: 12px;
+    }
+    // to add separtor line after the content
+    &__separator {
+        border-bottom: map-get($bordered-card, border);
+    }
+
+    &__tab-badge {
+        margin-left: 12px;
+        background-color: $card-bg-color;
+    }
+
+    &__subtitle-wrapper {
+        display: flex;
+    }
+
+    &__figure-wrapper {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    &__figure {
+        width: 96px;
+        color: color-get(primary, 500);
+    }
+
+    &__body {
+        padding: 16px;
+    }
+}

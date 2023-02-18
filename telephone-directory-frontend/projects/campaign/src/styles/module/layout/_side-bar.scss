@@ -1,0 +1,90 @@
+// Side Bar Component
+// 
+// Class for styling an aside bar in an application. 
+// Mainly use for an arrangement of the brand logo, main navigation, and user profile beneath the nav.
+// 
+// Markup
+// <section class="side-bar">
+//     <a class="side-bar__logo">...</a>
+//     <section class="side-bar__main">
+//         <nav class="side-bar__menu">...</nav>
+//         <footer class="side-bar__footer"></footer>
+//     </section>
+// </section>
+// 
+// Styleguides Modules.Layout.side-bar
+
+$side-bar: (
+    bg-color: color-get(text-light),
+    radius: (
+        top-right: 24px,
+        bottom-right: 24px
+    ),
+    size: (
+        height: 100vh
+    ),
+    logo: (
+        padding: (
+            x: 30px,
+            y: 24px
+        ),
+        border: (
+            bottom: 1px solid color-get(text-dark, 100)
+        ),
+        margin: (
+            bottom: 16px
+        )
+    ),
+
+    footer: (
+        padding: (
+            x: 28px,
+            y: 14px
+        ),
+        border: (
+            top: 1px solid color-get(text-dark, 100)
+        ),
+        margin: (
+            top: 16px
+        )
+    )
+);
+
+.side-bar {
+    @include common-properties($side-bar);
+
+    @include media-breakpoint-up(md) {
+        min-width: 184px;
+        width: 184px;
+        overflow: hidden;
+        word-break: break-word;
+        
+        display: flex;
+        flex-direction: column;
+    }
+
+    @include media-breakpoint-up(lg) {
+        min-width: 240px;
+        width: 240px;
+    }
+
+    &__logo {
+        $logo: map-get($side-bar, logo);
+
+        display: block;
+        @include common-properties($logo);
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+    }
+
+    &__footer {
+        $footer: map-get($side-bar, footer);
+        @include common-properties($footer);
+    }
+}

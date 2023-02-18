@@ -1,0 +1,19 @@
+.message-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    &__text {
+        border-radius: 5px;
+        background-color: color-get(text-light);
+        padding:12px;
+        @include font-get(text-sm);
+        color: color-get(text-dark);
+        margin-bottom: 10px;
+        display: inline-block;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

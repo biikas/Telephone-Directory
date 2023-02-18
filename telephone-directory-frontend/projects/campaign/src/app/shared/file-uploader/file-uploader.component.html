@@ -1,0 +1,71 @@
+<div class="uploader__wrapper" *ngIf="showUploadWindow">
+    <div class="uploader__area" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)">
+        <div class="brief brief--secondary">
+            <div class="brief__box">
+                <aspect-ratio-box [ratio]="260/150" [srcset]="appConstants.ILLUSTRATIONS.UPLOAD_FILE.srcset"
+                    [src]="appConstants.ILLUSTRATIONS.UPLOAD_FILE.src"
+                    [alt]="appConstants.ILLUSTRATIONS.UPLOAD_FILE.alt">
+                </aspect-ratio-box>
+            </div>
+            <p class="brief__title brief__title--small">
+                {{titleMessage}}
+            </p>
+            <p class="brief__details brief__details--light">
+                Drop files here to attach, or click on browse
+            </p>
+            <p class="brief__details brief__details--light">
+                {{infoMessage}}
+            </p>
+            <footer class="button-group">
+                <label ndButton="outline" role="button" aria-label="Browse">
+                    <input type="file" class="cdk-visually-hidden" ngFileSelect [options]="options"
+                        (uploadOutput)="onUploadOutput($event)" multiple [uploadInput]="uploadInput" #input
+                        (click)="input.value = null" />
+                    Browse
+                </label>
+            </footer>
+        </div>
+    </div>
+    <div class="uploader__progress-bar-group" *ngIf="progress?.length">
+        <div class="uploader__progress-bar" *ngFor="let file of progress; let i = index">
+            <div class="uploader__progress-top">
+                <div class="uploader__progress-title">
+                    <span icon="img-icon" class="uploader__progress-icon"></span> {{ file.name }}
+                </div>
+                <!-- <button ndButton="text" size="icon" (click)="removeImage(i)">
+                    <span icon="cross"></span>
+                </button> -->
+            </div>
+            <progress-bar [progress]="file.progress" class="success"></progress-bar>
+            <div class="uploader__progress-sub-title">
+                <ng-container *ngIf="file.progress < '100'">
+                    {{ file.progress }}% Uploading…
+                </ng-container>
+                <ng-container *ngIf="file.progress === '100'">
+                    {{ file.progress }}% Uploaded
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="uploader__thumbnails" *ngIf="files?.length  && showAttachment">
+    <div class="heading">
+        <h2 class="heading__title">
+            <span icon="paper-clip" class="heading__icon"></span>
+            Attachment
+        </h2>
+    </div>
+    <div class="thumbnail">
+        <div class="thumbnail__img-item" *ngFor="let file of files; let i = index">
+            <figure class="thumbnail__figure">
+                <img [src]="appConstants.ILLUSTRATIONS.XLS_FILE.src" [alt]="appConstants.ILLUSTRATIONS.XLS_FILE.src" class="thumbnail__img">
+                <button type="button" ndButton="text" size="icon" color="primary-inverted" (click)="removeFile(i)"
+                    class="thumbnail__remove-btn">
+                    <span icon="cross-circle-line"></span>
+                </button>
+                <figcaption>{{file.name}}</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>

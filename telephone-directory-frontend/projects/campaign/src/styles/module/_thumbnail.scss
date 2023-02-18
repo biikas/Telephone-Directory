@@ -1,0 +1,109 @@
+// Thumbnail Component
+//
+// Use this as a thumbnail for images.
+//
+// .thumbnail__img-item - to wrap up single attatchment 
+// .thumbnail__figure - to wrap each single attatchment figure
+// .thumbnail__img - to style the image of the attatchment
+// .thumbnail__remove-btn - to style the button used in the uploader
+//
+// Styleguides Modules.thumbnail
+
+.thumbnail {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -3.5px;
+
+    &--alignment {
+        justify-content: center;
+    }
+
+    &__img-item {
+        padding: 0 3.5px;
+        margin-bottom: 7px;
+    }
+
+    // ::before - add a light black overlay over an image, which is display none
+    // :hover - display the overlay over the image, by giving the pseudo selector :before the opacity of 1.
+    &__figure {
+        max-width: 112px;
+        height: 112px;
+        border-radius: 3px;
+        border: 1px solid color-get(border, 200);
+        padding: 3px;
+        position: relative;
+        margin-bottom: 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            height: calc(100% - 6px);
+            width: calc(100% - 6px);
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        &:hover {
+            &:before {
+                opacity: 1;
+            }
+
+            .thumbnail__remove-btn {
+                display: block;
+            }
+        }
+
+        &--secondary {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+
+            &:before {
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        &--tertiary {
+            @extend .thumbnail__figure--secondary;
+
+            &:before {
+                display: none;
+            } 
+            
+        }
+
+        &--small {
+            width: 36px;
+            height: 36px;
+        }
+
+        &--medium {
+            width: 64px;
+            height: 64px;
+        }
+    }    
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        object-fit: cover;
+
+        &--circle {
+            border-radius: 50%;
+        }
+    } 
+
+    &__remove-btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+        border-radius: 50%;
+    }       
+}

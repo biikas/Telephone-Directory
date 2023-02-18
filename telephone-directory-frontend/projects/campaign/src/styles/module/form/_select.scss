@@ -1,0 +1,198 @@
+body {
+    position: relative;
+}
+
+.select.ng-select {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    border: 1px solid color-get(border);
+    @include font-get(text);
+    padding: 12px;
+    color: color-get(text-dark);
+
+    &:hover:not(.ng-select-disabled) {
+        border-color: color-get(border, 600);
+
+        .ng-arrow-wrapper .ng-arrow {
+            border-color: color-get(border, 600);
+        }
+    }
+    
+    &.ng-select-focused {
+        border-color: color-get(primary);
+
+        .ng-arrow-wrapper .ng-arrow {
+            border-color: color-get(primary);
+        }
+    }
+
+    &.ng-select-disabled {
+        background-color: color-get(default, 100);
+        .ng-arrow-wrapper {
+            display: none;
+        }
+    }
+
+    .ng-select-container {
+        &.ng-has-value {
+            .ng-placeholder {
+                display: none;
+            }
+        }
+
+        .ng-value-container {
+            align-items: center;
+            min-height: 22px;
+        }
+
+        .ng-input {
+            top: 0;
+        }
+
+        .ng-input > input {
+            padding-left: 0 24px 0 0;
+        }
+    }
+
+    .ng-placeholder {
+        color: color-get(text-dark, 200);
+    }
+
+    .ng-clear-wrapper {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        backface-visibility: none;
+
+        .ng-clear {
+            color: color-get(border);
+        }
+    }
+
+    .ng-arrow-wrapper {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .ng-arrow {
+            width: 8px;
+            height: 8px;
+            margin-top: -4px;
+            border-color: color-get(border);
+            border-style: solid;
+            border-top-width: 0;
+            border-left-width: 2px;
+            border-right-width: 0;
+            border-bottom-width: 2px;
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+
+.ng-dropdown-panel {
+    padding-top: 9px;
+    @include font-get(text);
+
+    .ng-dropdown-panel-items {
+        border: 1px solid #dadce0;
+        border-radius: 3px;
+        background-color: color-get(text-light);
+        box-shadow: 0 12px 18px 0 rgba(0, 0, 0, 0.3);
+        
+        .ng-option {
+            padding: 12px 18px;
+
+            &.ng-option-marked {
+                background-color: color-get(border, 200);                
+            }
+            
+            &.ng-option-selected {
+                background-color: #e6eef7;
+
+                .ng-option-label {
+                    &__title {
+                        color: color-get(primary, 500);
+                    }
+                    
+                    &__supporting-title {
+                        color: color-get(text-dark);
+                    }
+                    
+                    &__subtitle {
+                        color: color-get(text-dark);
+                    }
+                }
+            }
+
+            &.ng-option-disabled {
+                cursor: auto;
+                background-color: color-get(text-light);
+                opacity: 0.7;
+
+                .ng-option-label {
+                    &__title {
+                        color: color-get(text-dark, 200);
+                    }
+
+                    &__subtitle {
+                        color: color-get(text-dark, 200);
+                    }
+
+                    &__supporting-title {
+                        color: color-get(text-dark, 200);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ng-option-label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    &__subtitle {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 100%;
+        max-width: 100%;
+
+        margin-top: 4px;
+        @include font-get(text-sm);
+        color: color-get(text-dark, 200);
+    }
+
+    &__supporting-title {
+        @include font-get(text-sm);
+        color: color-get(text-dark, 400);
+    }
+}
+
+.ng-value-label {
+    &__title {
+        @include font-get(h6);
+        color: color-get(text-dark);
+    }
+
+    &__desc {
+        @include font-get(text-sm);
+        color: color-get(text-dark, 400);
+    }
+}

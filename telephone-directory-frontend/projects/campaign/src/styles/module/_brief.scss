@@ -1,0 +1,94 @@
+// Brief
+// 
+// A block suitable for to display when there is no content or success of form submission
+//
+// Markup
+//  <div class="brief {{modifier_class}}">
+//      <div class="brief__wrapper">
+//          <div class="brief__box">
+//             ...
+//          </div>
+//      </div>
+//      <p class="brief__title">
+//          ...
+//      </p>
+//      <p class="brief__details">
+//          ...
+//      </p>
+//  </div>
+// 
+// .brief--secondary - Adds top, bottom, left and right padding.
+// .brief--text-left - Text aligns to left.
+// 
+// Styles Modules.brief
+
+.brief {
+    text-align: center;
+
+    &--text-left {
+        text-align: left;
+    }    
+
+    &--secondary {
+        padding-top: 16px;
+        padding-right: 24px;
+        padding-bottom: 16px;
+        padding-left: 24px;
+    }
+
+    &__wrapper {
+        max-width: 360px;
+        height: 226px;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 18px;
+    }
+
+    &__title {
+        color: color-get(text-dark, 500);
+        @include font-get(h4, medium, secondary);
+
+        &--small {
+            @include font-get(h6);
+            margin-bottom: 6px; 
+        }
+    }
+
+    &__details {
+        margin-bottom: 0;
+        color: color-get(text-dark);
+        @include font-get(text);
+
+        &--light {
+            color: color-get(text-dark, 300);
+        }
+
+        &--alternate {
+            margin-top: 4px;
+            @include font-get(text-sm);
+        }
+    }
+
+    &__box{
+        max-width: 260px;
+        margin-right: auto;
+        margin-left: auto;
+
+        &--small {
+            max-width: 200px;
+        }
+    }
+
+    &__icon {
+        margin-right: 6px;
+    }
+
+    &__button {
+        margin-top: 18px;
+    }
+
+    &__message {
+        text-align: inherit;
+    }
+}

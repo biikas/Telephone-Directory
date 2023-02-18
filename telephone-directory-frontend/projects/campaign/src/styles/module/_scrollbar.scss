@@ -1,0 +1,70 @@
+// Custom Ngx Perfect Scrollbar 
+// 
+// The default layout of rail-x and rail-y changed.
+// Masking added at the bottom of the scrollbar div.
+//
+// Styleguides Modules.scrollbar
+
+.ps {
+    position: relative;
+
+    &__thumb-y {
+        width: 4px;
+        border-radius: 2px;
+        background-color: color-get(secondary);
+        right: 0;
+    }
+
+    &--active-y {
+        padding-right: 4px;
+        
+        > .ps__rail-y {
+            width: 4px;
+            border-radius: 2px;
+            background-color: color-get(text-dark, 100);
+        }
+    }
+
+    &__rail-x, &__rail-y {
+        opacity: 1;
+    }
+
+    &__rail-y {
+        &:hover .ps__thumb-y, &:focus > .ps__thumb-y, &.ps--clicking .ps__thumb-y {
+            width: 4px;
+            border-radius: 2px;
+            background-color: color-get(secondary);
+        }
+    }
+}
+
+.ps:hover > .ps__rail-x, 
+.ps:hover > .ps__rail-y, 
+.ps--focus > .ps__rail-x, 
+.ps--focus > .ps__rail-y, 
+.ps--scrolling-x > .ps__rail-x, 
+.ps--scrolling-y > .ps__rail-y {
+    opacity: 1;
+}
+
+.scrollbar-box {
+    position: relative;
+    display: block;
+    
+    &::after {
+        content: '';        
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 46px;
+        background-image: linear-gradient(to bottom, rgba(color-get(text-light, 500), 0), color-get(text-light, 500) 62%);
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+    }
+
+    &.masking {        
+        &::after {
+            opacity: 1;            
+        }
+    }
+}

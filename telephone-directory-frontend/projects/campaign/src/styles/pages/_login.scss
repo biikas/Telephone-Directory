@@ -1,0 +1,124 @@
+// Login Module
+// 
+// Use to set the background and other templating required for a login page.
+// 
+// Markup
+// <div class="login">
+//     <header class="login__header">...</header>
+//     <main class="login__form">...</main>
+// </div>
+// 
+// Styleguides Pages.login
+
+$login: (
+    bg-image: url('projects/campaign/src/assets/login/2.jpg'),
+    logo: (
+        size: (
+            width: 291px,
+            height: 32px
+        ),
+        margin: (
+            left: auto,
+            right: auto,
+            bottom: 60px,
+            top: 20px
+        )
+    ),
+    main: (
+        width: 554px,
+        margin: (
+            bottom: 20px,
+        ),
+        padding: (
+            y: 48px,
+            x: 24px
+        ),
+        bg-color: color-get(text-light),
+        radius: 3px,
+        shadow: 0 -8px 24px 0 rgba(0, 0, 0, 0.02),
+    ),
+    heading: (
+        font: (
+            size: pixel-to-rem(22),
+            line-height: 1.45,
+            family: font-family(secondary),
+            weight: font-weight(normal)
+        ),
+        color: color-get(text-dark),
+        margin: (
+            bottom: 48px
+        )
+    ),
+    emphasized: (
+        color: color-get(primary),
+        font: (
+            weight: font-weight(medium)
+        )
+    ),
+    copyright: (
+        color: color-get(text-dark, 400),
+        font: (
+            size: pixel-to-rem(12),
+            line-height: 1.5,
+        ),
+        margin: (
+            top: 64px
+        )
+    )
+);
+
+.login {
+    $logo: map-get($login, logo);
+    $main: map-get($login, main);
+    $heading: map-get($login, heading);
+    $emphasized: map-get($login, emphasized);
+    $copyright: map-get($login, copyright);
+
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:after {
+        content: '';
+        background-image: map-get($login, bg-image);
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+    }
+
+    &__header {
+        overflow: hidden;
+        @include common-properties($logo);
+    }
+
+    &__form {
+        text-align: center;
+        @include common-properties($main);
+    }
+
+    &__heading {
+        @include common-properties($heading);
+    }
+
+    &__emphasized {
+        @include common-properties($emphasized);
+    }
+
+    &__button {
+        @include font-get(text-lg);
+    }
+
+    &__copyright {
+        @include common-properties($copyright);
+    }
+}

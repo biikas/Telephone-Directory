@@ -1,0 +1,39 @@
+$nd-textarea: (
+    radius: 3px,
+    border: 1px solid color-get(border, 500),
+    color: color-get(text-dark),
+    size: (
+        width: 100%,
+        height: 90px,
+    ),
+    padding: (
+        y: 12px,
+        x: 12px
+    ),
+    font: font-get(text),
+    states: (
+        ':placeholder': (
+            color: color-get(text-dark, 200),
+            font: pixel-to-rem(14),
+        ),
+        hover: (
+            border: 1px solid color-get(border, 600),
+        ),
+        focus: (
+            outline: none,
+            border: 1px solid color-get(primary),
+        ),
+        disabled: (
+            bg-color: color-get(default, 100),
+            border: 1px solid color-get(border, 400),
+        )
+    ),
+);
+
+@include nd-textarea {
+    display: block;
+    
+    &::-webkit-autofill {
+        box-shadow: 0 0 0px 1000px color-get(border, 100) inset;
+    }
+}

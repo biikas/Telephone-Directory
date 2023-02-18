@@ -1,0 +1,33 @@
+.nd-form-field {
+    $radius: 4px;
+
+    &__group {
+        display: flex;
+        align-items: stretch;
+    }
+
+
+    &__prefix {
+        display: flex;
+        align-items: center;
+        border-top-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+        border-top: solid 1px color-get(text-dark, 100);
+        border-bottom: solid 1px color-get(text-dark, 100);
+        border-left: solid 1px color-get(text-dark, 100);
+    }
+
+    &__infix {
+        border-radius: 0;
+    }
+
+    &__suffix {
+        display: flex;
+        align-items: center;
+        border-top-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+        border-top: solid 1px color-get(text-dark, 100);
+        border-bottom: solid 1px color-get(text-dark, 100);
+        border-right: solid 1px color-get(text-dark, 100);
+    }
+}

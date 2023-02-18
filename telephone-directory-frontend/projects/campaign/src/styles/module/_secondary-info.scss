@@ -1,0 +1,18 @@
+.secondary-info {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    &__list {
+        color: color-get(text-dark);
+        @include font-get(text);
+
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__icon {
+        margin-right: 4px;
+    }
+}

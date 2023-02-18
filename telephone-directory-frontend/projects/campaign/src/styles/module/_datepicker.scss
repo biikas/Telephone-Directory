@@ -1,0 +1,125 @@
+// Date Picker Component
+//
+// Overrides the default design of angular date picker.
+//
+// Styleguides Modules.datepicker
+
+$theme-list: (
+    'default': color-get(primary, 500)
+);
+
+@import '~ngx-bootstrap/datepicker/bs-datepicker';
+
+.bs-datepicker-container {
+    padding: 0;
+}
+
+.bs-datepicker {
+    border-radius: 3px;
+    border: solid 1px color-get(border, 200);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.04);
+}
+
+.theme-default .bs-datepicker-head {
+	background-color: transparent;
+}
+
+.bs-datepicker-head {
+	.current {
+		@include font-get(text-lg);
+		color: color-get(text-dark);
+
+		&:hover, &:focus, &:active {
+			background-color: color-get(primary, 500);
+			color: color-get(text-light);
+		}
+
+		&:nth-child(3) {
+			color: color-get(primary, 500);
+
+			&:hover {
+				color: color-get(text-light);
+			}
+		}
+	}
+
+	.next, .previous {
+		@include font-get(text);
+		color: color-get(text-dark, 400);
+
+		&:hover, &:focus, &:active {
+			background-color: color-get(text-dark, 100);
+		}
+	}
+}
+
+.bs-datepicker-body {
+	border: none;
+
+	table.days span {
+		width: 36px;
+	    height: 36px;
+	    line-height: 36px;
+	}
+}
+
+.bs-datepicker-predefined-btns .btn {
+	&.selected {
+		background-color: color-get(primary, 500);
+	}
+}
+
+table.days, table.weeks {
+	tbody {
+		&:before {
+		    content:"@";
+		    display:block;
+		    line-height:16px;
+		    text-indent:-99999px;
+		}
+	}
+}
+
+table.days, table.weeks, table.years, table.months {
+	th {
+		color: color-get(text-dark, 400);
+		@include font-get(text-sm);
+
+		&:last-child {
+			color: color-get(error);
+		}
+	}
+
+	td {
+		span {
+			color: color-get(text-dark);
+			@include font-get(text);
+			border: 1px solid transparent;
+
+			.in-range:not(.select-start):before {
+				background: color-get(primary, 100);
+			}
+		}
+
+		span.is-highlighted:not(.disabled):not(.selected), 
+		&.is-highlighted:not(.disabled):not(.selected) span {
+			border: 1px solid color-get(text-dark, 100);
+			background-color: transparent;
+		}
+
+		span[class*=select-] {
+			background-color: color-get(primary, 500);
+			color: color-get(text-light);
+		}
+	}
+}
+
+table.years {
+	td {
+		span {
+			width: 56px;
+		    height: 56px;
+		    line-height: 56px;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+// Dialog Box 
+// 
+// Use for popup dialog box in an application.
+// 
+// Styleguides Modules.dialog
+
+.dialog {
+    display: block;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        min-width: 420px;
+    }
+
+    &:focus {
+        outline: 1px solid color-get(border, 200);
+    }
+
+    &__container {
+    	margin-bottom: 0;
+    }
+}
+
+.custom-dialog-pane {
+    width: 100%;
+}
